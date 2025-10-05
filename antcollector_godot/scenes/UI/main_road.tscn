@@ -1,0 +1,50 @@
+[gd_scene load_steps=6 format=3 uid="uid://cuxyuydiyj5ic"]
+
+[ext_resource type="Script" uid="uid://b7ghkix66u05x" path="res://scripts/main/main_road.gd" id="1_b457l"]
+[ext_resource type="Texture2D" uid="uid://dumux8rbycgkf" path="res://assets/main/start_screen.png" id="2_cr1oc"]
+[ext_resource type="Texture2D" uid="uid://g1l56rq6bdt0" path="res://assets/main/car.png" id="3_e37um"]
+[ext_resource type="Texture2D" uid="uid://bbt03ixmga4km" path="res://assets/main/game_title.png" id="4_digrk"]
+[ext_resource type="Texture2D" uid="uid://cx0saft4opi14" path="res://assets/main/start_button.png" id="5_cr1oc"]
+
+[node name="MainRoad" type="Node2D"]
+script = ExtResource("1_b457l")
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2(1920, 0)
+
+[node name="TextureRect" type="TextureRect" parent="ParallaxBackground/ParallaxLayer"]
+custom_minimum_size = Vector2(2000, 500)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 2000.0
+offset_bottom = 2000.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("2_cr1oc")
+expand_mode = 2
+stretch_mode = 1
+
+[node name="Car" type="Sprite2D" parent="."]
+position = Vector2(162, 625)
+texture = ExtResource("3_e37um")
+
+[node name="GameTitle" type="Sprite2D" parent="."]
+position = Vector2(1288, 434)
+texture = ExtResource("4_digrk")
+
+[node name="StartButton" type="TextureButton" parent="."]
+offset_left = 748.0
+offset_top = 862.0
+offset_right = 993.0
+offset_bottom = 950.0
+scale = Vector2(1.5, 1.5)
+texture_normal = ExtResource("5_cr1oc")
+
+[connection signal="mouse_entered" from="StartButton" to="." method="_on_texture_button_mouse_entered"]
+[connection signal="mouse_exited" from="StartButton" to="." method="_on_start_button_mouse_exited"]
+[connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]

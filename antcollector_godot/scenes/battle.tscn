@@ -1,0 +1,59 @@
+[gd_scene load_steps=6 format=3 uid="uid://dnskhem67g14t"]
+
+[ext_resource type="Script" uid="uid://brwee2xgcegkd" path="res://scripts/battle/battle.gd" id="1_dn72j"]
+[ext_resource type="PackedScene" uid="uid://dtb2r7i1ad0lu" path="res://scenes/ants/ant.tscn" id="2_th188"]
+[ext_resource type="PackedScene" uid="uid://bej8nw3lyx5m8" path="res://scenes/ants/boss_ant.tscn" id="3_p1qf1"]
+
+[sub_resource type="Gradient" id="Gradient_p1qf1"]
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_a12nh"]
+gradient = SubResource("Gradient_p1qf1")
+
+[node name="Battle" type="Node2D"]
+script = ExtResource("1_dn72j")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-43, -64)
+scale = Vector2(7.87891, 1217)
+texture = SubResource("GradientTexture1D_a12nh")
+centered = false
+
+[node name="ColorRect" type="ColorRect" parent="Sprite2D"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="BossAnt" parent="Node2D" instance=ExtResource("3_p1qf1")]
+position = Vector2(824, 455)
+
+[node name="Ant" parent="Node2D" instance=ExtResource("2_th188")]
+position = Vector2(784, 646)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="DebugPanel" type="VBoxContainer" parent="CanvasLayer"]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="SpawnAntButton" type="Button" parent="CanvasLayer/DebugPanel"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 72
+text = "Add Ant"
+
+[node name="BossAttackButton" type="Button" parent="CanvasLayer/DebugPanel"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 72
+text = "Boss Attack"
+
+[node name="NextDayButton" type="Button" parent="CanvasLayer/DebugPanel"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 72
+text = "End Battle"
+
+[connection signal="pressed" from="CanvasLayer/DebugPanel/SpawnAntButton" to="." method="_on_spawn_ant_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/DebugPanel/BossAttackButton" to="." method="_on_boss_attack_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/DebugPanel/NextDayButton" to="." method="_on_next_day_button_pressed"]

@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://coawwbsx60jue"]
+
+[ext_resource type="LabelSettings" uid="uid://cymtqecixfoxw" path="res://resources/labels/game_title_settings.tres" id="1_jymrs"]
+[ext_resource type="Script" uid="uid://c7636hms50oyr" path="res://scripts/start_comics.gd" id="1_pw1xd"]
+
+[node name="StartComics" type="Node2D"]
+script = ExtResource("1_pw1xd")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 206.0
+offset_top = 430.0
+offset_right = 1778.0
+offset_bottom = 9301.0
+text = "Start comics with the story and motivation
+You need to beat 3 bosses with Granny's ants"
+label_settings = ExtResource("1_jymrs")

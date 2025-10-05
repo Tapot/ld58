@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://bej8nw3lyx5m8"]
+
+[ext_resource type="Texture2D" uid="uid://lbhr7lp233t" path="res://assets/ants/boss_ant.png" id="1_o5ynj"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6bmul"]
+radius = 160.0
+height = 570.0
+
+[node name="BossAnt" type="CharacterBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_o5ynj")
+centered = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(236, 360)
+shape = SubResource("CapsuleShape2D_6bmul")

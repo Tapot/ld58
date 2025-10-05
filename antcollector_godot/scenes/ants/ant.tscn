@@ -1,0 +1,52 @@
+[gd_scene load_steps=8 format=3 uid="uid://dtb2r7i1ad0lu"]
+
+[ext_resource type="Script" uid="uid://dsuosglhcbhet" path="res://scripts/ants/ant.gd" id="1_nw6qt"]
+[ext_resource type="Texture2D" uid="uid://dlwy8atea3y0f" path="res://assets/ants/ant_run.png" id="2_nw6qt"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a0380"]
+atlas = ExtResource("2_nw6qt")
+region = Rect2(0, 0, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0a7oh"]
+atlas = ExtResource("2_nw6qt")
+region = Rect2(200, 0, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_klcjx"]
+atlas = ExtResource("2_nw6qt")
+region = Rect2(400, 0, 200, 200)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_b2bgx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a0380")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0a7oh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_klcjx")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nw6qt"]
+radius = 18.0
+height = 72.0
+
+[node name="Ant" type="CharacterBody2D"]
+motion_mode = 1
+script = ExtResource("1_nw6qt")
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, 6)
+rotation = 1.5708
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_b2bgx")
+autoplay = "default"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_nw6qt")

@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://c0qju7nwdcmuu"]
+
+[ext_resource type="PackedScene" uid="uid://cuxyuydiyj5ic" path="res://scenes/UI/main_road.tscn" id="1_omah3"]
+
+[node name="StartGameMain" type="Node2D"]
+
+[node name="MainRoad" parent="." instance=ExtResource("1_omah3")]

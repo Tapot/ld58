@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://c6eyiuvxytfs8"]
+
+[ext_resource type="Script" uid="uid://db2rpovpkadih" path="res://scripts/battle_splash.gd" id="1_ymfor"]
+[ext_resource type="LabelSettings" uid="uid://cymtqecixfoxw" path="res://resources/labels/game_title_settings.tres" id="2_iqa2b"]
+
+[node name="BattleSplash" type="Node2D"]
+script = ExtResource("1_ymfor")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 620.0
+offset_top = 470.0
+offset_right = 1341.0
+offset_bottom = 671.0
+text = "Battle Splash Images
+Ants vs. Boss"
+label_settings = ExtResource("2_iqa2b")

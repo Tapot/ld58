@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://blgol5purjwev"]
+
+[ext_resource type="Script" uid="uid://d26t4p7xscyy3" path="res://scripts/end_game_comics.gd" id="1_030k0"]
+[ext_resource type="LabelSettings" uid="uid://cymtqecixfoxw" path="res://resources/labels/game_title_settings.tres" id="1_ji7rk"]
+
+[node name="EndGameComics" type="Node2D"]
+script = ExtResource("1_030k0")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 732.0
+offset_top = 434.0
+offset_right = 1086.0
+offset_bottom = 533.0
+text = "End Game"
+label_settings = ExtResource("1_ji7rk")
