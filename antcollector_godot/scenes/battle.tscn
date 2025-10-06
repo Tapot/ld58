@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://dnskhem67g14t"]
+[gd_scene load_steps=7 format=3 uid="uid://dnskhem67g14t"]
 
 [ext_resource type="Script" uid="uid://brwee2xgcegkd" path="res://scripts/battle/battle.gd" id="1_dn72j"]
-[ext_resource type="PackedScene" uid="uid://dtb2r7i1ad0lu" path="res://scenes/ants/ant.tscn" id="2_th188"]
+[ext_resource type="PackedScene" uid="uid://coqj1y2pw7q3s" path="res://scenes/ants/ant_bite_spawner.tscn" id="2_p1qf1"]
 [ext_resource type="PackedScene" uid="uid://bej8nw3lyx5m8" path="res://scenes/ants/boss_ant.tscn" id="3_p1qf1"]
+[ext_resource type="PackedScene" uid="uid://bwyqfioglhi6o" path="res://scenes/ants/ants_spawner.tscn" id="4_a12nh"]
 
 [sub_resource type="Gradient" id="Gradient_p1qf1"]
 
@@ -25,35 +26,51 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Node2D" type="Node2D" parent="."]
+[node name="BossAnt" parent="." instance=ExtResource("3_p1qf1")]
+position = Vector2(960, 762)
 
-[node name="BossAnt" parent="Node2D" instance=ExtResource("3_p1qf1")]
-position = Vector2(824, 455)
+[node name="AntBiteSpawner" parent="." instance=ExtResource("2_p1qf1")]
 
-[node name="Ant" parent="Node2D" instance=ExtResource("2_th188")]
-position = Vector2(784, 646)
+[node name="AntsSpawner" parent="." instance=ExtResource("4_a12nh")]
+
+[node name="Ants" type="Node2D" parent="."]
+
+[node name="BossHP" type="ProgressBar" parent="."]
+offset_left = 575.0
+offset_top = 37.0
+offset_right = 1575.0
+offset_bottom = 129.0
+theme_override_font_sizes/font_size = 64
+value = 100.0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+visible = false
 
-[node name="DebugPanel" type="VBoxContainer" parent="CanvasLayer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="SpawnAntButton" type="Button" parent="CanvasLayer/DebugPanel"]
+[node name="DebugPanel" type="VBoxContainer" parent="CanvasLayer/VBoxContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+
+[node name="SpawnAntButton" type="Button" parent="CanvasLayer/VBoxContainer/DebugPanel"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 72
 text = "Add Ant"
 
-[node name="BossAttackButton" type="Button" parent="CanvasLayer/DebugPanel"]
+[node name="BossAttackButton" type="Button" parent="CanvasLayer/VBoxContainer/DebugPanel"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 72
 text = "Boss Attack"
 
-[node name="NextDayButton" type="Button" parent="CanvasLayer/DebugPanel"]
+[node name="NextDayButton" type="Button" parent="CanvasLayer/VBoxContainer/DebugPanel"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 72
 text = "End Battle"
 
-[connection signal="pressed" from="CanvasLayer/DebugPanel/SpawnAntButton" to="." method="_on_spawn_ant_button_pressed"]
-[connection signal="pressed" from="CanvasLayer/DebugPanel/BossAttackButton" to="." method="_on_boss_attack_button_pressed"]
-[connection signal="pressed" from="CanvasLayer/DebugPanel/NextDayButton" to="." method="_on_next_day_button_pressed"]
+[connection signal="gui_input" from="Sprite2D/ColorRect" to="." method="_on_color_rect_gui_input"]
+[connection signal="pressed" from="CanvasLayer/VBoxContainer/DebugPanel/SpawnAntButton" to="." method="_on_spawn_ant_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/VBoxContainer/DebugPanel/BossAttackButton" to="." method="_on_boss_attack_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/VBoxContainer/DebugPanel/NextDayButton" to="." method="_on_next_day_button_pressed"]

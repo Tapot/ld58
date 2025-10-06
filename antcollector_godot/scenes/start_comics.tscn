@@ -12,5 +12,7 @@ offset_top = 430.0
 offset_right = 1778.0
 offset_bottom = 9301.0
 text = "Start comics with the story and motivation
-You need to beat 3 bosses with Granny's ants"
+You need to beat 3 bosses with Granny's ants
+
+PRESS ANY KEY TO SKIP"
 label_settings = ExtResource("1_jymrs")

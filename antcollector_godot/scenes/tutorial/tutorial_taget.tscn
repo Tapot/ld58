@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://b8khou8v0pmek"]
+
+[ext_resource type="Script" uid="uid://bdyim2a33sad8" path="res://scripts/tutorial/tutorial_taget.gd" id="1_hyigk"]
+[ext_resource type="Texture2D" uid="uid://23wkbmo8xofj" path="res://assets/tutorial/jar_target.png" id="1_lqpot"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lqpot"]
+radius = 138.014
+
+[node name="TutorialTaget" type="Area2D"]
+script = ExtResource("1_hyigk")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_lqpot")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_lqpot")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

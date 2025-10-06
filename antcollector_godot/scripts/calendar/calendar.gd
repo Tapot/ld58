@@ -16,3 +16,7 @@ func on_battle_over():
 		Scenes.go_to_finish_scene()
 	else:
 		Scenes.go_to_battle_scene()
+
+
+func _on_start_tutorial_pressed() -> void:
+	Scenes.go_to_tutorial_scene()

@@ -1,7 +1,7 @@
 extends Node
 
 
-const MAX_DAYS: int = 5
+const MAX_DAYS: int = 7
 var current_day: int = 0
 
 func _ready() -> void:

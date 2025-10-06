@@ -6,11 +6,19 @@
 [node name="BattleSplash" type="Node2D"]
 script = ExtResource("1_ymfor")
 
-[node name="Label" type="Label" parent="."]
-offset_left = 620.0
-offset_top = 470.0
-offset_right = 1341.0
-offset_bottom = 671.0
-text = "Battle Splash Images
-Ants vs. Boss"
+[node name="BattleBoss1" type="Sprite2D" parent="."]
+
+[node name="BattleBoss2" type="Sprite2D" parent="."]
+
+[node name="BattleBoss3" type="Sprite2D" parent="."]
+
+[node name="Label2" type="Label" parent="."]
+offset_left = 206.0
+offset_top = 430.0
+offset_right = 1778.0
+offset_bottom = 9301.0
+text = "splash
+ants vs. boss N
+
+PRESS ANY KEY TO SKIP"
 label_settings = ExtResource("2_iqa2b")

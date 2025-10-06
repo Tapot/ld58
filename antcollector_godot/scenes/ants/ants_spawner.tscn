@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bwyqfioglhi6o"]
+
+[ext_resource type="Script" uid="uid://b84ur6bh8k4kx" path="res://scripts/ants/ants_spawner.gd" id="1_rnaei"]
+
+[node name="AntsSpawner" type="Node2D"]
+script = ExtResource("1_rnaei")

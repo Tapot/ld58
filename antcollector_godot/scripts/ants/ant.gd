@@ -1,49 +1,87 @@
 class_name Ant extends CharacterBody2D
 
+const MOVE_SPEED_DEFAULT: int = 100
+const MOVE_BITED_ACS: int = 3
+const MOVE_ATTACK_ACS: int = 6
 
 var max_hp: int = 10
 var current_hp: = max_hp
-var move_speed: float = 100.0
-var attack_speed: float = 1.0
-var attack_size: int = 1
+var move_speed: float = MOVE_SPEED_DEFAULT
+var attack_speed_min: float = 1.0
+var attack_speed_max: float = 1.0
+var attack_time: float = 0.2
+var attack_size: float = 10
 
-
-var enemy_target
-var move_target
+var _move_target: Vector2 = Vector2.ZERO
 var threshold: float = 4.0
 var turn_speed: float = 5.0
+var is_attacking: bool = false
+var is_bited: bool = false
+
 
 func _ready() -> void:
-	move_target = Screen.get_random_point_on_screen()
+	set_random_move_target()
+	Signals.connect_ant_bite_appears(
+		on_ant_bite_appears
+	)
+	Signals.connect_ant_bite_disappears(
+		on_ant_bite_disappears
+	)
+
 
 func _physics_process(delta: float) -> void:
-	if move_target:
+	if _move_target:
 		move_to_target(delta, move_speed)
 	else:
-		move_target = Screen.get_random_point_on_screen()
+		set_random_move_target()
 	move_and_slide()
 
-func move_to_target(delta: float, speed: float) -> bool:
-	var to_target = move_target - global_position
+
+func set_random_move_target() -> void:
+	set_move_target(
+		Screen.get_random_point_on_screen()
+	)
+
+func set_move_target(pos: Vector2):
+	_move_target = pos
+
+
+func on_ant_bite_appears(pos: Vector2) -> void:
+	if is_attacking:
+		return
 	
-	# check if the target is reached
+	is_bited = true
+	move_speed = MOVE_BITED_ACS * MOVE_SPEED_DEFAULT
+	set_move_target(pos)
+
+
+func on_ant_bite_disappears() -> void:
+	if is_attacking:
+		return
+	is_bited = false
+	move_speed = MOVE_SPEED_DEFAULT
+	set_random_move_target()
+	
+
+func move_to_target(delta: float, speed: float) -> void:
+	var to_target = _move_target - global_position
+	
 	if to_target.length() <= threshold:
-		global_position = move_target
-		move_target = null
-		return true
-	
-	# calculate the desired angle towards the target
+		_move_target = Vector2.ZERO
+
 	var desired_angle = to_target.angle()
-	
-	# smoothly rotate towards the desired angle
+
 	rotation = lerp_angle(rotation, desired_angle, turn_speed * delta)
-	
-	# move forward in the direction of the current rotation
 	var direction = Vector2.RIGHT.rotated(rotation)
 	global_position += direction * speed * delta
-	
-	return false
 
-func attack():
-	if enemy_target:
-		enemy_target.make_damage(attack)
+
+func die():
+	Signals.emit_ant_died(global_position)
+	queue_free()
+
+
+func attack_boss(target_position: Vector2) -> void:
+	is_attacking = true
+	move_speed = MOVE_ATTACK_ACS * MOVE_SPEED_DEFAULT
+	set_move_target(target_position)

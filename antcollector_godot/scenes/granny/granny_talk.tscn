@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://qiw7m3arhoq0"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0g5gk"]
+
+[node name="GrannyTalk" type="Node2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_0g5gk")

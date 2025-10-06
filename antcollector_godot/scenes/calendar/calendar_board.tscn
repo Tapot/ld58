@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://bd3bwa7cbo7hj"]
+
+[ext_resource type="Texture2D" uid="uid://d3e33f0gfxsf0" path="res://assets/calendar/calendar.png" id="1_mkef6"]
+
+[node name="CalendarBoard" type="Node2D"]
+
+[node name="CalendarImage" type="Sprite2D" parent="."]
+texture = ExtResource("1_mkef6")
+centered = false

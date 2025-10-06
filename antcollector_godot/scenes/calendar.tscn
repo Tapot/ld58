@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://4r4jtr2txgqg"]
+[gd_scene load_steps=5 format=3 uid="uid://4r4jtr2txgqg"]
 
 [ext_resource type="Script" uid="uid://bplmsr6e7a83e" path="res://scripts/calendar/calendar.gd" id="1_o53js"]
-[ext_resource type="LabelSettings" uid="uid://cymtqecixfoxw" path="res://resources/labels/game_title_settings.tres" id="2_vrnb8"]
+[ext_resource type="Texture2D" uid="uid://bsxo8bplrcxub" path="res://assets/calendar/calendar_background.png" id="2_xnkdq"]
+[ext_resource type="PackedScene" uid="uid://bd3bwa7cbo7hj" path="res://scenes/calendar/calendar_board.tscn" id="3_vrnb8"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_xnkdq"]
 font_size = 72
@@ -14,21 +15,27 @@ shadow_color = Color(0, 0, 0, 0.870588)
 [node name="Calendar" type="Node2D"]
 script = ExtResource("1_o53js")
 
+[node name="Background" type="Sprite2D" parent="."]
+texture = ExtResource("2_xnkdq")
+centered = false
+
+[node name="CalendarBoard" parent="." instance=ExtResource("3_vrnb8")]
+
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
-offset_left = 874.0
-offset_top = 402.0
-offset_right = 1272.0
-offset_bottom = 509.0
+offset_left = 1476.0
+offset_top = 732.0
+offset_right = 2271.0
+offset_bottom = 1045.0
 size_flags_horizontal = 4
 
-[node name="Label" type="Label" parent="VBoxContainer"]
+[node name="Title" type="Label" parent="VBoxContainer"]
 layout_mode = 2
-text = "calendar with progress"
-label_settings = ExtResource("2_vrnb8")
+text = "Days:"
+label_settings = SubResource("LabelSettings_xnkdq")
 
 [node name="Days" type="Label" parent="VBoxContainer"]
 layout_mode = 2
-text = "1/14"
+text = "1/7"
 label_settings = SubResource("LabelSettings_xnkdq")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
@@ -40,4 +47,10 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 72
 text = "Next"
 
+[node name="StartTutorial" type="Button" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 72
+text = "Tutor"
+
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/ButtonFight" to="." method="_on_button_fight_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/StartTutorial" to="." method="_on_start_tutorial_pressed"]

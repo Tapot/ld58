@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://coqj1y2pw7q3s"]
+
+[ext_resource type="Script" uid="uid://k0k4hhdmg8ck" path="res://scripts/ants/ant_bite_spawner.gd" id="1_vf8ok"]
+
+[node name="AntBiteSpawner" type="Node2D"]
+script = ExtResource("1_vf8ok")

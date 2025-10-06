@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://clf4uvhvi5x1c"]
+
+[ext_resource type="Script" uid="uid://b8ckri65w0500" path="res://scripts/ants/ant_bait.gd" id="1_kcp14"]
+[ext_resource type="Texture2D" uid="uid://rcmqir3xdqy6" path="res://assets/ants/ants_bait.png" id="2_kcp14"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_kcp14"]
+radius = 42.0119
+
+[node name="AntBait" type="Area2D"]
+collision_layer = 0
+script = ExtResource("1_kcp14")
+
+[node name="BaitImage" type="Sprite2D" parent="."]
+position = Vector2(-4.76837e-07, -2.38419e-07)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("2_kcp14")
+hframes = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_kcp14")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
