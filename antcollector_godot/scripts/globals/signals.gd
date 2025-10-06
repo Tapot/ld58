@@ -20,6 +20,7 @@ func connect_start_game(collable: Callable) -> void:
 func emit_next_day() -> void:
 	next_day.emit()
 
+
 func connect_next_day(collable: Callable) -> void:
 	next_day.connect(collable)
 

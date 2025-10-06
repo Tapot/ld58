@@ -28,7 +28,6 @@ func go_to_next_scene(scene_name: String = "") -> void:
 	if not scene_name:
 		scene_name = next_scenes[current_scene]
 	current_scene = scene_name
-	print(current_scene)
 	get_tree().call_deferred(
 		"change_scene_to_packed",
 		scenes[current_scene]

@@ -1,12 +1,14 @@
 class_name Calendar extends Node2D
 
-@onready var days: Label = $VBoxContainer/Days
+
 @onready var fight_button: SimpleButton = $FightButton
 @onready var start_tutor_button: SimpleButton = $StartTutorButton
 @onready var restart_tutorial_button: RestartTutorialButton = $RestartTutorialButton
+@onready var calendar_board: Node2D = $CalendarBoard
 
 
 func _ready() -> void:
+	setup_calendar_board()
 	if GameState.is_tutor_passed:
 		start_tutor_button.hide()
 		fight_button.show()
@@ -23,7 +25,17 @@ func _ready() -> void:
 	
 	start_tutor_button.set_text("LEARN")
 	Signals.emit_next_day()
-	days.text = str(GameState.current_day) + " / " + str(GameState.MAX_DAYS)
+
+
+func setup_calendar_board() -> void:
+	if GameState.fights.size() < 1:
+		return
+	
+	for i in range(GameState.fights.size()):
+		if GameState.fights[i]:
+			calendar_board.set_success(i)
+		else:
+			calendar_board.set_fail(i)
 
 
 func on_battle_over():
