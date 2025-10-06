@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://ygslt05pbkif"]
+
+[ext_resource type="Texture2D" uid="uid://dho5t5l4uagu" path="res://assets/UI/dialogue.png" id="1_mkbqr"]
+[ext_resource type="FontFile" uid="uid://cwe6l11eroit2" path="res://assets/fonts/Lacquer/Lacquer-Regular.ttf" id="2_ca7wc"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_rhxqs"]
+font = ExtResource("2_ca7wc")
+font_size = 32
+font_color = Color(0, 0, 0, 1)
+
+[node name="Dialogue" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_mkbqr")
+centered = false
+
+[node name="RichTextLabel" type="Label" parent="."]
+offset_left = 96.0
+offset_top = 130.0
+offset_right = 955.0
+offset_bottom = 253.0
+text = "I’m your granddaddy. 
+Learn to fight for yourself — and watch ants; 
+they’ll teach you how to move with purpose."
+label_settings = SubResource("LabelSettings_rhxqs")

@@ -1,8 +1,70 @@
-[gd_scene load_steps=2 format=3 uid="uid://qiw7m3arhoq0"]
+[gd_scene load_steps=10 format=3 uid="uid://qiw7m3arhoq0"]
+
+[ext_resource type="Texture2D" uid="uid://cnxwk0i4edig1" path="res://assets/granny/grandpa_glitch-2.png" id="1_818hd"]
+[ext_resource type="Script" uid="uid://bluioragpm5uu" path="res://scripts/granny/granny_talk.gd" id="1_updwk"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_updwk"]
+atlas = ExtResource("1_818hd")
+region = Rect2(0, 0, 949, 532)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_818hd"]
+atlas = ExtResource("1_818hd")
+region = Rect2(0, 0, 949, 532)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0a127"]
+atlas = ExtResource("1_818hd")
+region = Rect2(949, 0, 949, 532)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wwqel"]
+atlas = ExtResource("1_818hd")
+region = Rect2(1898, 0, 949, 532)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iguei"]
+atlas = ExtResource("1_818hd")
+region = Rect2(2847, 0, 949, 532)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b7wp2"]
+atlas = ExtResource("1_818hd")
+region = Rect2(0, 0, 949, 532)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_0g5gk"]
+animations = [{
+"frames": [{
+"duration": 5.0,
+"texture": SubResource("AtlasTexture_updwk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_818hd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0a127")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wwqel")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iguei")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_b7wp2")
+}],
+"loop": false,
+"name": &"glitch",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 5.0,
+"texture": SubResource("AtlasTexture_updwk")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
 
 [node name="GrannyTalk" type="Node2D"]
+script = ExtResource("1_updwk")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_0g5gk")
+animation = &"glitch"
+autoplay = "idle"

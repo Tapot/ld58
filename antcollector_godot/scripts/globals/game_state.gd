@@ -4,6 +4,8 @@ extends Node
 const MAX_DAYS: int = 7
 var current_day: int = 0
 
+var is_tutor_passed: bool = false
+
 func _ready() -> void:
 	Signals.connect_next_day(
 		on_next_day

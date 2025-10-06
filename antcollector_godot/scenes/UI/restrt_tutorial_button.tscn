@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://dxkdxkriobp3v"]
+
+[ext_resource type="Texture2D" uid="uid://b0ht6cssgfyh5" path="res://assets/UI/replay_button.png" id="1_pif1h"]
+[ext_resource type="Script" uid="uid://cgyokmnkqlgwj" path="res://scripts/UI/restrt_tutorial_button.gd" id="2_wrxf4"]
+[ext_resource type="FontFile" uid="uid://cwe6l11eroit2" path="res://assets/fonts/Lacquer/Lacquer-Regular.ttf" id="3_taq86"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_pmu4c"]
+font = ExtResource("3_taq86")
+font_size = 32
+font_color = Color(0, 0, 0, 1)
+
+[node name="RestartTutorialButton" type="TextureButton"]
+offset_right = 40.0
+offset_bottom = 40.0
+texture_normal = ExtResource("1_pif1h")
+script = ExtResource("2_wrxf4")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 205.0
+offset_top = 92.0
+offset_right = 342.0
+offset_bottom = 173.0
+text = "REPLAY
+TUTORIAL"
+label_settings = SubResource("LabelSettings_pmu4c")
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

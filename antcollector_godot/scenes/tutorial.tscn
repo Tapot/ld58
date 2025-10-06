@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://cmaavtvx27h2k"]
+[gd_scene load_steps=9 format=3 uid="uid://cmaavtvx27h2k"]
 
 [ext_resource type="Script" uid="uid://cjr5uyij86l0l" path="res://scripts/tutorial.gd" id="1_ph3nu"]
 [ext_resource type="PackedScene" uid="uid://bwyqfioglhi6o" path="res://scenes/ants/ants_spawner.tscn" id="3_6yjpi"]
 [ext_resource type="PackedScene" uid="uid://coqj1y2pw7q3s" path="res://scenes/ants/ant_bite_spawner.tscn" id="3_cq4me"]
 [ext_resource type="LabelSettings" uid="uid://cymtqecixfoxw" path="res://resources/labels/game_title_settings.tres" id="4_4kmhl"]
 [ext_resource type="PackedScene" uid="uid://b8khou8v0pmek" path="res://scenes/tutorial/tutorial_taget.tscn" id="5_cq4me"]
+[ext_resource type="PackedScene" uid="uid://cn2wst8jflg0u" path="res://scenes/UI/simple_button.tscn" id="6_6yjpi"]
 
 [sub_resource type="Gradient" id="Gradient_p1qf1"]
 
@@ -51,4 +52,11 @@ label_settings = ExtResource("4_4kmhl")
 [node name="TutorialTaget" parent="." instance=ExtResource("5_cq4me")]
 position = Vector2(1085, 895)
 
+[node name="BackButton" parent="." instance=ExtResource("6_6yjpi")]
+offset_left = 1503.0
+offset_top = 845.0
+offset_right = 1903.0
+offset_bottom = 1085.0
+
 [connection signal="gui_input" from="Sprite2D/ColorRect" to="." method="_on_color_rect_gui_input"]
+[connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]

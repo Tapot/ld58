@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://cn2wst8jflg0u"]
+
+[ext_resource type="Texture2D" uid="uid://ba4o8ro0fsrt3" path="res://assets/UI/button.png" id="1_54yru"]
+[ext_resource type="FontFile" uid="uid://cwe6l11eroit2" path="res://assets/fonts/Lacquer/Lacquer-Regular.ttf" id="2_e40dl"]
+[ext_resource type="Script" uid="uid://cyglftt0jixw2" path="res://scripts/UI/simple_button.gd" id="2_hy7n1"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_vqkwy"]
+font = ExtResource("2_e40dl")
+font_size = 100
+font_color = Color(0.262745, 0.278431, 0.270588, 1)
+
+[node name="SimpleButton" type="TextureButton"]
+offset_right = 400.0
+offset_bottom = 240.0
+texture_normal = ExtResource("1_54yru")
+script = ExtResource("2_hy7n1")
+
+[node name="TextLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 29.0
+offset_right = 379.0
+offset_bottom = 188.0
+text = "BACK"
+label_settings = SubResource("LabelSettings_vqkwy")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
