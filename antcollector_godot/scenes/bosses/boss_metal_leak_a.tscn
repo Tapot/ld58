@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3 uid="uid://btoicgrd7mif8"]
+
+[ext_resource type="Texture2D" uid="uid://1by1s0mvd5y4" path="res://assets/bosses/boss_metal_leak_a.png" id="1_2qb2j"]
+[ext_resource type="Script" uid="uid://f01c2k5syqko" path="res://scripts/bosses/boss_metal_leak_a.gd" id="1_2532n"]
+[ext_resource type="Texture2D" uid="uid://23wkbmo8xofj" path="res://assets/tutorial/jar_target.png" id="3_088w2"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2532n"]
+radius = 237.154
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_088w2"]
+radius = 253.0
+
+[node name="BossMetalLeakA" type="CharacterBody2D"]
+script = ExtResource("1_2532n")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_2qb2j")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_2532n")
+
+[node name="HitBox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+position = Vector2(1, 3)
+shape = SubResource("CircleShape2D_088w2")
+
+[node name="Shadow" type="Sprite2D" parent="."]
+texture = ExtResource("3_088w2")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+
+[connection signal="body_entered" from="HitBox" to="." method="_on_hit_box_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

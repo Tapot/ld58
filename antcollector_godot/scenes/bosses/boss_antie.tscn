@@ -1,28 +1,30 @@
 [gd_scene load_steps=5 format=3 uid="uid://bej8nw3lyx5m8"]
 
-[ext_resource type="Script" uid="uid://d2qwt1pylki" path="res://scripts/ants/boss_ant.gd" id="1_6bmul"]
-[ext_resource type="Texture2D" uid="uid://lbhr7lp233t" path="res://assets/ants/boss_ant.png" id="1_o5ynj"]
+[ext_resource type="Script" uid="uid://bxbwbkijnnib6" path="res://scripts/bosses/boss_antie.gd" id="1_6be3j"]
+[ext_resource type="Texture2D" uid="uid://lbhr7lp233t" path="res://assets/bosses/boss_ant.png" id="1_o5ynj"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6bmul"]
-radius = 160.0
-height = 570.0
+radius = 96.0
+height = 454.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ys8in"]
-radius = 185.0
-height = 676.0
+radius = 132.0
+height = 554.0
 
-[node name="BossAnt" type="CharacterBody2D"]
-script = ExtResource("1_6bmul")
+[node name="BossAntie" type="CharacterBody2D"]
+script = ExtResource("1_6be3j")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_o5ynj")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(4, 78)
 shape = SubResource("CapsuleShape2D_6bmul")
 
 [node name="HitBox" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+position = Vector2(4, 66)
 shape = SubResource("CapsuleShape2D_ys8in")
 
 [connection signal="body_entered" from="HitBox" to="." method="_on_hit_box_body_entered"]

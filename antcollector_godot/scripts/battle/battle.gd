@@ -1,12 +1,11 @@
 class_name Battle extends Node2D
 
 
-@onready var debug_panel: VBoxContainer = %DebugPanel
 @onready var ants: Node2D = $Ants
 @onready var boss_hp: ProgressBar = $BossHP
-@onready var boss_ant: BossAntie = $BossAnt
 @onready var ants_spawner: AntsSpawner = $AntsSpawner
 @onready var ant_bite_spawner: AntsBiteSpawner = $AntBiteSpawner
+@onready var bosses_spawner: BossesSpawner = $BossesSpawner
 
 
 var wave_number: int = 0
@@ -21,18 +20,15 @@ var boss_is_dead: bool = false
 
 func _ready():
 	Scenes.current_scene = "battle"
+	GameState.is_tutor_passed = true
 	Signals.connect_attack_boss(
 		on_attack_boss
 	)
 	Signals.connect_damage_boss(
 		on_damage_boss
 	)
+	bosses_spawner.spawn_boss(GameState.current_boss_index)
 	spawn_wave()
-
-
-func _unhandled_input(_event: InputEvent) -> void:
-	if Input.is_action_pressed("debug"):
-		debug_panel.visible = not debug_panel.visible
 
 
 func _process(delta: float) -> void:
@@ -48,13 +44,16 @@ func _process(delta: float) -> void:
 
 
 func on_attack_boss(ant: Ant) -> void:
-	ant.attack_boss(boss_ant.global_position)
+	ant.attack_boss(
+		bosses_spawner.get_boss_position()
+	)
 
 
 func on_damage_boss(damage: float) -> void:
 	boss_hp.value -= damage
 	if boss_hp.value < 1:
 		boss_is_dead = true
+		GameState.current_boss_index += 1
 
 
 func spawn_wave() -> void:

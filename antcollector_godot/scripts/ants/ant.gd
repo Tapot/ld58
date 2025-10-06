@@ -13,10 +13,9 @@ var attack_time: float = 0.2
 var attack_size: float = 10
 
 var _move_target: Vector2 = Vector2.ZERO
-var threshold: float = 4.0
+var threshold: float = 20.0
 var turn_speed: float = 5.0
 var is_attacking: bool = false
-var is_bited: bool = false
 
 
 func _ready() -> void:
@@ -30,14 +29,13 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
-	if _move_target:
-		move_to_target(delta, move_speed)
-	else:
-		set_random_move_target()
+	move_to_target(delta, move_speed)
 	move_and_slide()
 
 
 func set_random_move_target() -> void:
+	is_attacking = false
+	move_speed = MOVE_SPEED_DEFAULT
 	set_move_target(
 		Screen.get_random_point_on_screen()
 	)
@@ -50,7 +48,6 @@ func on_ant_bite_appears(pos: Vector2) -> void:
 	if is_attacking:
 		return
 	
-	is_bited = true
 	move_speed = MOVE_BITED_ACS * MOVE_SPEED_DEFAULT
 	set_move_target(pos)
 
@@ -58,15 +55,17 @@ func on_ant_bite_appears(pos: Vector2) -> void:
 func on_ant_bite_disappears() -> void:
 	if is_attacking:
 		return
-	is_bited = false
 	move_speed = MOVE_SPEED_DEFAULT
 	set_random_move_target()
 	
 
 func move_to_target(delta: float, speed: float) -> void:
+	if not _move_target:
+		set_random_move_target()
 	var to_target = _move_target - global_position
 	
 	if to_target.length() <= threshold:
+		print(to_target.length())
 		_move_target = Vector2.ZERO
 
 	var desired_angle = to_target.angle()

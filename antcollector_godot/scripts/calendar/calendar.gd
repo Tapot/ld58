@@ -15,8 +15,12 @@ func _ready() -> void:
 		start_tutor_button.show()
 		fight_button.hide()
 		restart_tutorial_button.hide()
-		
-	fight_button.set_text("FIGHT")
+	
+	if GameState.is_over():
+		fight_button.set_text("LEAVE")
+	else:
+		fight_button.set_text("FIGHT")
+	
 	start_tutor_button.set_text("LEARN")
 	Signals.emit_next_day()
 	days.text = str(GameState.current_day) + " / " + str(GameState.MAX_DAYS)

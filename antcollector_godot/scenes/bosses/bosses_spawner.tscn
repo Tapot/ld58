@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://kn6sfo1y22m2"]
+
+[ext_resource type="Script" uid="uid://cwvfj0b7xclp" path="res://scripts/bosses/bosses_spawner.gd" id="1_te1md"]
+
+[node name="BossesSpawner" type="Node2D"]
+script = ExtResource("1_te1md")
