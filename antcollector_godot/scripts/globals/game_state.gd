@@ -87,11 +87,14 @@ func on_ant_died(
 	death_reason: String,
 	_pos: Vector2
 ) -> void:
+	var inxed_day = current_day
+	if current_day > 6:
+		inxed_day = 6
 	collections_log.append(
 		{
 			"name": ant_name,
 			"death_reason": death_reasons[death_reason],
-			"day": days[current_day]
+			"day": days[inxed_day]
 		}
 	)
 	ants_dies += 1

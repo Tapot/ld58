@@ -24,7 +24,6 @@ func _ready() -> void:
 		fight_button.set_text("FIGHT")
 	
 	start_tutor_button.set_text("LEARN")
-	Signals.emit_next_day()
 
 
 func setup_calendar_board() -> void:

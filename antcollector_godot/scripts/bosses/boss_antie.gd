@@ -28,4 +28,5 @@ func _on_hit_box_body_entered(body: Node2D) -> void:
 
 
 func die():
+	global_position.y += 300
 	sprite_2d.play("died")

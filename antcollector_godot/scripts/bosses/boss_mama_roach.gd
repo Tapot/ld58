@@ -8,6 +8,8 @@ var rotate_tolerance: float = 0.5
 var threshold: float = 10
 var _move_target
 var boss_name = "MAMA ROACH"
+var is_dead: bool = false
+
 
 func _ready() -> void:
 	global_position = Screen.get_random_point_on_screen()
@@ -16,18 +18,28 @@ func _ready() -> void:
 	)
 
 
+func _process(_delta: float) -> void:
+	if global_position.x > 4000 or global_position.x < -1000:
+		global_position.x = 0
+	
+	if global_position.y > 4000 or global_position.y < -1000:
+		global_position.y = 0
+
+
 func _physics_process(delta: float) -> void:
-	if _move_target:
-		if rotate_to_target(
-			_move_target,
-			delta,
-			rotate_speed,
-			rotate_tolerance,
-		):
-			move_to_target(delta, move_speed)
-	else:
-		_move_target = Screen.get_random_point_on_screen()
-	move_and_slide()
+	if not is_dead:
+		if _move_target:
+			if rotate_to_target(
+				_move_target,
+				delta,
+				rotate_speed,
+				rotate_tolerance,
+			):
+				move_to_target(delta, move_speed)
+		else:
+			_move_target = Screen.get_random_point_on_screen()
+		move_and_slide()
+
 
 func rotate_to_target(
 	target: Vector2,
@@ -58,6 +70,8 @@ func rotate_to_target(
 	return false
 
 func move_to_target(delta: float, speed: float) -> void:
+	sprite_2d.play("run")
+	Sfx.play_turn()
 	var to_target = _move_target - global_position
 	
 	if to_target.length() <= threshold:
@@ -86,4 +100,5 @@ func _on_hit_box_body_entered(body: Node2D) -> void:
 
 
 func die():
+	is_dead = true
 	sprite_2d.play("died")

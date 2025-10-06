@@ -28,6 +28,7 @@ func die() -> void:
 
 
 func _on_body_entered(body: Node2D) -> void:
+	Sfx.play_eat()
 	if body is BossMamaRoach:
 		die()
 	
@@ -35,6 +36,7 @@ func _on_body_entered(body: Node2D) -> void:
 		if not is_poison:
 			die()
 	elif body is Ant:
+		
 		if is_poison:
 			body.die("poison")
 		else:

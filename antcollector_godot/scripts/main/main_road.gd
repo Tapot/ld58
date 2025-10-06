@@ -14,6 +14,7 @@ var start_button_pos: Vector2
 
 
 func _ready() -> void:
+	Sfx.play_music_menu()
 	Signals.connect_start_game(on_start_game)
 	start_button_pos = start_button.global_position
 
@@ -30,6 +31,7 @@ func _process(delta: float) -> void:
 
 func on_start_game():
 	run_car = true
+	Sfx.play_car()
 	GameState.current_boss_index = 0
 	GameState.current_day = 0
 	GameState.collections_log.clear()

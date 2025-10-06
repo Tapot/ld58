@@ -8,6 +8,7 @@ var _counter : int = 0
 
 
 func _ready():
+	Sfx.play_music_menu()
 	restart_button.hide()
 	restart_button.set_text("AGAIN")
 	Scenes.current_scene = "end_game_comics"
@@ -27,7 +28,7 @@ func _on_next_button_pressed() -> void:
 func go_to_next_record():
 	var death_log = GameState.collections_log.pick_random()
 	# Ant "UNKNOWN" DIED AT SUNDAY DEATH REASON: JAR
-	label_2.text = "Ant: " + death_log["name"] + "\nDIED AT " + death_log["day"] + "\nDEATH REASON: " + death_log["death_reason"]
+	label_2.text = "Name: " + death_log["name"] + "\nDIED AT: " + death_log["day"] + "\nDEATH REASON: " + death_log["death_reason"]
 	_counter += 1
 	
 	if _counter > 5:

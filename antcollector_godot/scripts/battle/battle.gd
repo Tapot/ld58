@@ -24,6 +24,11 @@ var is_battle_over: bool = false
 
 
 func _ready():
+	if GameState.current_boss_index == 2:
+		Sfx.play_music_mama()
+	else:
+		Sfx.play_music_battle()
+	Signals.emit_next_day()
 	battle_end.hide()
 	simple_button.set_text("ok")
 	Scenes.current_scene = "battle"
@@ -62,9 +67,9 @@ func on_attack_boss(ant: Ant) -> void:
 func on_damage_boss(damage: float) -> void:
 	boss_hp.value -= damage
 	if boss_hp.value < 1:
-		fight_over(true)
 		bosses_spawner.kill_the_boss()
 		GameState.current_boss_index += 1
+		fight_over(true)
 
 
 func setup_hp_bar() -> void:
@@ -76,14 +81,15 @@ func setup_hp_bar() -> void:
 
 
 func fight_over(success: bool):
-	is_battle_over = true
-	GameState.add_fight_results(success)
-	battle_end.show()
-	
-	if success:
-		battle_end_label.text = "BOSS is dead"
-	else:
-		battle_end_label.text = "ALL Ants are dead"
+	if not is_battle_over:
+		is_battle_over = true
+		GameState.add_fight_results(success)
+		battle_end.show()
+		
+		if success:
+			battle_end_label.text = "BOSS is dead"
+		else:
+			battle_end_label.text = "ALL Ants are dead"
 
 
 func spawn_wave() -> void:
