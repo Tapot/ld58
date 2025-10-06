@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" uid="uid://brwee2xgcegkd" path="res://scripts/battle/battle.gd" id="1_dn72j"]
 [ext_resource type="PackedScene" uid="uid://coqj1y2pw7q3s" path="res://scenes/ants/ant_bite_spawner.tscn" id="2_p1qf1"]
-[ext_resource type="PackedScene" uid="uid://bej8nw3lyx5m8" path="res://scenes/ants/boss_ant.tscn" id="3_p1qf1"]
 [ext_resource type="PackedScene" uid="uid://bwyqfioglhi6o" path="res://scenes/ants/ants_spawner.tscn" id="4_a12nh"]
+[ext_resource type="PackedScene" uid="uid://kn6sfo1y22m2" path="res://scenes/bosses/bosses_spawner.tscn" id="4_lpir7"]
 
 [sub_resource type="Gradient" id="Gradient_p1qf1"]
 
@@ -26,12 +26,11 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="BossAnt" parent="." instance=ExtResource("3_p1qf1")]
-position = Vector2(960, 762)
-
 [node name="AntBiteSpawner" parent="." instance=ExtResource("2_p1qf1")]
 
 [node name="AntsSpawner" parent="." instance=ExtResource("4_a12nh")]
+
+[node name="BossesSpawner" parent="." instance=ExtResource("4_lpir7")]
 
 [node name="Ants" type="Node2D" parent="."]
 
@@ -43,34 +42,4 @@ offset_bottom = 129.0
 theme_override_font_sizes/font_size = 64
 value = 100.0
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-visible = false
-
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="DebugPanel" type="VBoxContainer" parent="CanvasLayer/VBoxContainer"]
-unique_name_in_owner = true
-visible = false
-layout_mode = 2
-
-[node name="SpawnAntButton" type="Button" parent="CanvasLayer/VBoxContainer/DebugPanel"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 72
-text = "Add Ant"
-
-[node name="BossAttackButton" type="Button" parent="CanvasLayer/VBoxContainer/DebugPanel"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 72
-text = "Boss Attack"
-
-[node name="NextDayButton" type="Button" parent="CanvasLayer/VBoxContainer/DebugPanel"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 72
-text = "End Battle"
-
 [connection signal="gui_input" from="Sprite2D/ColorRect" to="." method="_on_color_rect_gui_input"]
-[connection signal="pressed" from="CanvasLayer/VBoxContainer/DebugPanel/SpawnAntButton" to="." method="_on_spawn_ant_button_pressed"]
-[connection signal="pressed" from="CanvasLayer/VBoxContainer/DebugPanel/BossAttackButton" to="." method="_on_boss_attack_button_pressed"]
-[connection signal="pressed" from="CanvasLayer/VBoxContainer/DebugPanel/NextDayButton" to="." method="_on_next_day_button_pressed"]

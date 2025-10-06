@@ -1,18 +1,31 @@
-[gd_scene load_steps=3 format=3 uid="uid://c6eyiuvxytfs8"]
+[gd_scene load_steps=6 format=3 uid="uid://c6eyiuvxytfs8"]
 
 [ext_resource type="Script" uid="uid://db2rpovpkadih" path="res://scripts/battle_splash.gd" id="1_ymfor"]
 [ext_resource type="LabelSettings" uid="uid://cymtqecixfoxw" path="res://resources/labels/game_title_settings.tres" id="2_iqa2b"]
+[ext_resource type="Texture2D" uid="uid://d34igeuanrrxr" path="res://assets/vs_splashes/splash_1.png" id="2_oqhbo"]
+[ext_resource type="Texture2D" uid="uid://chn6tkbshbuw0" path="res://assets/vs_splashes/splash_2.png" id="3_66ijq"]
+[ext_resource type="Texture2D" uid="uid://cpitqyivqxa5p" path="res://assets/vs_splashes/splash_3.png" id="4_jllrn"]
 
 [node name="BattleSplash" type="Node2D"]
 script = ExtResource("1_ymfor")
 
 [node name="BattleBoss1" type="Sprite2D" parent="."]
+position = Vector2(0, -1084)
+texture = ExtResource("2_oqhbo")
+centered = false
 
 [node name="BattleBoss2" type="Sprite2D" parent="."]
+position = Vector2(0, -1084)
+texture = ExtResource("3_66ijq")
+centered = false
 
 [node name="BattleBoss3" type="Sprite2D" parent="."]
+position = Vector2(0, -1084)
+texture = ExtResource("4_jllrn")
+centered = false
 
 [node name="Label2" type="Label" parent="."]
+visible = false
 offset_left = 206.0
 offset_top = 430.0
 offset_right = 1778.0

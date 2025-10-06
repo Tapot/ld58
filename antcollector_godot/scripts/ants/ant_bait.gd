@@ -28,9 +28,12 @@ func die():
 
 
 func _on_body_entered(body: Node2D) -> void:
-	if body is Ant:
-		if is_poison:
-			body.die()
-		else:
-			Signals.emit_attack_boss(body)
+	if body is BossMamaRoach:
 		die()
+	else:
+		if body is Ant:
+			if is_poison:
+				body.die()
+			else:
+				Signals.emit_attack_boss(body)
+			die()

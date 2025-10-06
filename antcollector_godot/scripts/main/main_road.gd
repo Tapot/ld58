@@ -12,11 +12,11 @@ extends Node2D
 var run_car: bool = false
 var start_button_pos: Vector2
 
-func _enter_tree() -> void:
-	Signals.connect_start_game(on_start_game)
 
 func _ready() -> void:
+	Signals.connect_start_game(on_start_game)
 	start_button_pos = start_button.global_position
+
 
 func _process(delta: float) -> void:
 	parallax_background.scroll_offset.x -= road_speed * delta
@@ -27,8 +27,11 @@ func _process(delta: float) -> void:
 	if car.global_position.x > 2000:
 		Scenes.go_to_next_scene()
 
+
 func on_start_game():
 	run_car = true
+	GameState.current_boss_index = 0
+	GameState.current_day = 0
 
 
 func _on_texture_button_mouse_entered() -> void:
