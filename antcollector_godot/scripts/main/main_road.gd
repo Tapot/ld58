@@ -32,6 +32,7 @@ func on_start_game():
 	run_car = true
 	GameState.current_boss_index = 0
 	GameState.current_day = 0
+	GameState.collections_log.clear()
 
 
 func _on_texture_button_mouse_entered() -> void:

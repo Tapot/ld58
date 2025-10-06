@@ -27,7 +27,11 @@ func on_attack_boss(ant: Ant):
 	ant.attack_boss(tutorial_taget.global_position)
 
 
-func on_ant_died(_pos: Vector2):
+func on_ant_died(
+	_ant_name: String,
+	_death_reason: String,
+	_pos: Vector2
+):
 	ants_spawner.spawn_ant()
 
 

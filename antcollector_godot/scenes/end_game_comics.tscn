@@ -1,15 +1,64 @@
-[gd_scene load_steps=3 format=3 uid="uid://blgol5purjwev"]
+[gd_scene load_steps=7 format=3 uid="uid://blgol5purjwev"]
 
 [ext_resource type="Script" uid="uid://d26t4p7xscyy3" path="res://scripts/end_game_comics.gd" id="1_030k0"]
-[ext_resource type="LabelSettings" uid="uid://cymtqecixfoxw" path="res://resources/labels/game_title_settings.tres" id="1_ji7rk"]
+[ext_resource type="Texture2D" uid="uid://dho5t5l4uagu" path="res://assets/UI/dialogue.png" id="2_kwyyq"]
+[ext_resource type="FontFile" uid="uid://cwe6l11eroit2" path="res://assets/fonts/Lacquer/Lacquer-Regular.ttf" id="3_cpitr"]
+[ext_resource type="PackedScene" uid="uid://cn2wst8jflg0u" path="res://scenes/UI/simple_button.tscn" id="4_cpitr"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_stg0v"]
+font = ExtResource("3_cpitr")
+font_size = 84
+font_color = Color(0.180392, 0.211765, 0.027451, 1)
+shadow_size = 3
+shadow_color = Color(0.121569, 0, 0.105882, 0)
+
+[sub_resource type="LabelSettings" id="LabelSettings_1gnvr"]
+font = ExtResource("3_cpitr")
+font_size = 72
+font_color = Color(1, 0.211765, 0.027451, 1)
+outline_color = Color(0.164706, 0.0901961, 0.0862745, 1)
 
 [node name="EndGameComics" type="Node2D"]
 script = ExtResource("1_030k0")
 
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(2.12759, 2.0717)
+texture = ExtResource("2_kwyyq")
+centered = false
+
 [node name="Label" type="Label" parent="."]
-offset_left = 732.0
-offset_top = 434.0
-offset_right = 1086.0
-offset_bottom = 533.0
-text = "End Game"
-label_settings = ExtResource("1_ji7rk")
+offset_left = 264.0
+offset_top = 254.0
+offset_right = 618.0
+offset_bottom = 353.0
+text = "Your Collection:"
+label_settings = SubResource("LabelSettings_stg0v")
+
+[node name="Label2" type="Label" parent="."]
+offset_left = 438.0
+offset_top = 396.0
+offset_right = 1565.0
+offset_bottom = 573.0
+text = "Ant \"UNKNOWN\" 
+DIED AT SUNDAY 
+DEATH REASON: JAR"
+label_settings = SubResource("LabelSettings_1gnvr")
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[node name="NextButton" parent="." instance=ExtResource("4_cpitr")]
+offset_left = 690.0
+offset_top = 692.0
+offset_right = 1090.0
+offset_bottom = 932.0
+
+[node name="RestartButton" parent="." instance=ExtResource("4_cpitr")]
+offset_left = 210.0
+offset_top = 698.0
+offset_right = 610.0
+offset_bottom = 938.0
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="pressed" from="NextButton" to="." method="_on_next_button_pressed"]
+[connection signal="pressed" from="RestartButton" to="." method="_on_restart_button_pressed"]

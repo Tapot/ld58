@@ -80,4 +80,4 @@ func _on_hit_box_body_entered(body: Node2D) -> void:
 			Signals.emit_damage_boss(
 				body.attack_size
 			)
-		body.die()
+		body.die("mama_roach")

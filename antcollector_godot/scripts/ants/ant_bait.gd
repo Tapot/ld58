@@ -36,7 +36,7 @@ func _on_body_entered(body: Node2D) -> void:
 			die()
 	elif body is Ant:
 		if is_poison:
-			body.die()
+			body.die("poison")
 		else:
 			Signals.emit_attack_boss(body)
 		die()

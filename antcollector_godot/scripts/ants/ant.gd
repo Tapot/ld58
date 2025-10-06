@@ -14,12 +14,41 @@ var attack_speed_min: float = 1.0
 var attack_speed_max: float = 1.0
 var attack_time: float = 0.2
 var attack_size: float = 10
+var ant_name = "Unknown Ant"
 
 var _move_target: Vector2 = Vector2.ZERO
 var threshold: float = 20.0
 var turn_speed: float = 5.0
 var is_attacking: bool = false
 var is_dead: bool = false
+
+var ants_names: Array[String] = [
+	"Henry", "Edward", "George", "Elizabeth", "Mary", "Anne", "Victoria",
+	"James", "Charles", "William", "Richard", "John", "Matilda",
+	"Stephen", "Harold", "Edmund", "Edgar", "Ethelred", "Canute"
+]
+
+var insect_epithets: Array[String] = [
+	"FlySlayer", "Ant Maiden", "Beetle Sabbath", "Roach Against the Machine",
+	"Locust Roses", "Dragonfly Cult", "Buzz Pistols", "The Crawling Stones",
+	"Moth Division", "Scarab Youth", "Wasp Factory", "Grasshopper Corpses",
+	"Cricket Floyd", "Bee Gehenna", "Gnats N’ Roses", "Butterfly Temple",
+	"Ladybug Zeppelin", "Cockroach Mode", "Hornet Storm", "The Velvet Termites",
+	"Praying Mantis Crew", "Silverfish Jam", "Firefly Messiah", "Weevil Nation",
+	"Spider Beatles", "Centipede Sabbath", "Scorpion Sisters", "Black Widow Choir",
+	"Larva Lords", "Hive Division", "Tick Dolls", "Bedbug Riot", "Cicada Sound",
+	"Locustica", "Termite Underground", "Dung Beetle Symphony", "Aphid Youth",
+	"Beetlejuice Orchestra", "Wormageddon", "Buggy Popes", "Hive Against Humanity"
+]
+
+
+func get_ant_name() -> String:
+	randomize()
+	var ant_main_name = ants_names[randi() % ants_names.size()]
+	var number = randi() % 8 + 1 # от I до VIII
+	var epithet = insect_epithets[randi() % insect_epithets.size()]
+	return "%s %d %s" % [ant_main_name, number, epithet]
+
 
 
 func _ready() -> void:
@@ -30,17 +59,19 @@ func _ready() -> void:
 	Signals.connect_ant_bite_disappears(
 		on_ant_bite_disappears
 	)
+	ant_name = get_ant_name()
 	sprite_2d.play("appear")
+
 
 func _process(_delta: float) -> void:
 	if global_position.x < -2000:
-		die()
+		die("lost")
 	if global_position.x > 3000:
-		die()
+		die("lost")
 	if global_position.y < -2000:
-		die()
+		die("lost")
 	if global_position.y > 3000:
-		die()
+		die("lost")
 
 func _physics_process(delta: float) -> void:
 	if not is_dead:
@@ -91,7 +122,7 @@ func move_to_target(delta: float, speed: float) -> void:
 	global_position += direction * speed * delta
 
 
-func die():
+func die(reason: String):
 	collision_shape_2d.set_deferred("disabled", true)
 	is_dead = true
 	
@@ -99,7 +130,7 @@ func die():
 		sprite_2d.play("explode")
 	else:
 		sprite_2d.play("die")
-	Signals.emit_ant_died(global_position)
+	Signals.emit_ant_died(ant_name, reason, global_position)
 
 
 func attack_boss(target_position: Vector2) -> void:

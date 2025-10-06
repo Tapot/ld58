@@ -6,7 +6,7 @@ signal attack_boss(ant: Ant)
 signal damage_boss(damage: float)
 signal add_ant_bite(pos: Vector2)
 signal ant_bite_appears(pos: Vector2)
-signal ant_died(pos: Vector2)
+signal ant_died(ant_name: String, reason: String, pos: Vector2)
 signal ant_bite_disappears
 
 
@@ -53,8 +53,8 @@ func connect_ant_bite_appears(collable: Callable) -> void:
 	ant_bite_appears.connect(collable)
 
 
-func emit_ant_died(pos: Vector2) -> void:
-	ant_died.emit(pos)
+func emit_ant_died(ant_name: String, reason: String, pos: Vector2) -> void:
+	ant_died.emit(ant_name, reason, pos)
 
 func connect_ant_died(collable: Callable) -> void:
 	ant_died.connect(collable)
