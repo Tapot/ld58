@@ -16,12 +16,12 @@ centered = false
 
 [node name="BattleBoss2" type="Sprite2D" parent="."]
 position = Vector2(0, -1084)
-texture = ExtResource("3_66ijq")
+texture = ExtResource("4_jllrn")
 centered = false
 
 [node name="BattleBoss3" type="Sprite2D" parent="."]
 position = Vector2(0, -1084)
-texture = ExtResource("4_jllrn")
+texture = ExtResource("3_66ijq")
 centered = false
 
 [node name="Label2" type="Label" parent="."]

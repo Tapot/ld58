@@ -27,6 +27,7 @@ func _ready():
 	Signals.connect_damage_boss(
 		on_damage_boss
 	)
+	setup_hp_bar()
 	bosses_spawner.spawn_boss(GameState.current_boss_index)
 	spawn_wave()
 
@@ -37,10 +38,10 @@ func _process(delta: float) -> void:
 		spawn_wave()
 	
 	if is_no_more_ants and ants_spawner.is_all_died():
-		Scenes.go_to_next_scene()
+		fight_over(false)
 	
 	if boss_is_dead:
-		Scenes.go_to_next_scene()
+		fight_over(true)
 
 
 func on_attack_boss(ant: Ant) -> void:
@@ -56,6 +57,18 @@ func on_damage_boss(damage: float) -> void:
 		GameState.current_boss_index += 1
 
 
+func setup_hp_bar() -> void:
+	var boss_hp_max = GameState.bosses_hp[
+		GameState.current_boss_index
+	]
+	boss_hp.max_value = boss_hp_max
+	boss_hp.value = boss_hp_max
+
+func fight_over(success: bool):
+	GameState.add_fight_results(success)
+	Scenes.go_to_next_scene()
+
+
 func spawn_wave() -> void:
 	if wave_number >= waves.size():
 		is_no_more_ants = true
@@ -65,18 +78,6 @@ func spawn_wave() -> void:
 	wave_number += 1
 	for i in range(ants_count):
 		ants_spawner.spawn_ant()
-
-
-func _on_spawn_ant_button_pressed() -> void:
-	ants_spawner.spawn_ant()
-
-
-func _on_boss_attack_button_pressed() -> void:
-	pass # Replace with function body.
-
-
-func _on_next_day_button_pressed() -> void:
-	Scenes.go_to_next_scene()
 
 
 func _on_color_rect_gui_input(event: InputEvent) -> void:

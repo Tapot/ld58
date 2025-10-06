@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://fta2flucjjff"]
+
+[ext_resource type="Script" uid="uid://cykaa05bg5wpn" path="res://scripts/bosses/boss_fly.gd" id="1_mslyj"]
+[ext_resource type="Texture2D" uid="uid://niuipmij43i" path="res://assets/bosses/boss_fly.png" id="2_mslyj"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tlt62"]
+radius = 162.003
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_p4miq"]
+radius = 198.252
+
+[node name="BossFly" type="CharacterBody2D"]
+script = ExtResource("1_mslyj")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(33, 5)
+rotation = 1.5708
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_mslyj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1)
+rotation = 1.5708
+shape = SubResource("CircleShape2D_tlt62")
+
+[node name="HitBox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+position = Vector2(1, 3)
+rotation = 1.5708
+shape = SubResource("CircleShape2D_p4miq")
+
+[connection signal="body_entered" from="HitBox" to="." method="_on_hit_box_body_entered"]

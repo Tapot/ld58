@@ -1,18 +1,20 @@
-[gd_scene load_steps=3 format=3 uid="uid://coawwbsx60jue"]
+[gd_scene load_steps=4 format=3 uid="uid://coawwbsx60jue"]
 
-[ext_resource type="LabelSettings" uid="uid://cymtqecixfoxw" path="res://resources/labels/game_title_settings.tres" id="1_jymrs"]
 [ext_resource type="Script" uid="uid://c7636hms50oyr" path="res://scripts/start_comics.gd" id="1_pw1xd"]
+[ext_resource type="Texture2D" uid="uid://cnwnhty66souw" path="res://assets/comics/start_comics.png" id="2_ckhc8"]
+[ext_resource type="PackedScene" uid="uid://cn2wst8jflg0u" path="res://scenes/UI/simple_button.tscn" id="3_1f0q0"]
 
 [node name="StartComics" type="Node2D"]
 script = ExtResource("1_pw1xd")
 
-[node name="Label" type="Label" parent="."]
-offset_left = 206.0
-offset_top = 430.0
-offset_right = 1778.0
-offset_bottom = 9301.0
-text = "Start comics with the story and motivation
-You need to beat 3 bosses with Granny's ants
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_ckhc8")
+centered = false
 
-PRESS ANY KEY TO SKIP"
-label_settings = ExtResource("1_jymrs")
+[node name="NextButton" parent="." instance=ExtResource("3_1f0q0")]
+offset_left = 1513.0
+offset_top = 853.0
+offset_right = 1913.0
+offset_bottom = 1093.0
+
+[connection signal="pressed" from="NextButton" to="." method="_on_simple_button_pressed"]

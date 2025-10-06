@@ -3,13 +3,13 @@ class_name BossesSpawner extends Node2D
 
 const BOSS_ANTIE = preload("res://scenes/bosses/boss_antie.tscn")
 const BOSS_MAMA_ROACH = preload("res://scenes/bosses/boss_mama_roach.tscn")
-const BOSS_METAL_LEAK_A = preload("res://scenes/bosses/boss_metal_leak_a.tscn")
-
+#const BOSS_METAL_LEAK_A = preload("res://scenes/bosses/boss_metal_leak_a.tscn")
+const BOSS_FLY = preload("res://scenes/bosses/boss_fly.tscn")
 var _boss
 var _bosses = [
 	BOSS_ANTIE,
+	BOSS_FLY,
 	BOSS_MAMA_ROACH,
-	BOSS_METAL_LEAK_A,
 ]
 
 
