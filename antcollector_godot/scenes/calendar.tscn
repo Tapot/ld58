@@ -24,10 +24,10 @@ position = Vector2(484, 816)
 position = Vector2(848, 552)
 
 [node name="FightButton" parent="." instance=ExtResource("5_yqp0o")]
-offset_left = 1505.0
-offset_top = 849.0
-offset_right = 1905.0
-offset_bottom = 1089.0
+offset_left = 1500.0
+offset_top = 850.0
+offset_right = 1900.0
+offset_bottom = 1090.0
 
 [node name="StartTutorButton" parent="." instance=ExtResource("5_yqp0o")]
 offset_left = 1506.0

@@ -41,6 +41,7 @@ func _on_color_rect_gui_input(event: InputEvent) -> void:
 			ant_bite_spawner.spawn_ant_bite(
 				event.global_position, "random"
 			)
+			Sfx.play_bite()
 
 
 func _on_back_button_pressed() -> void:

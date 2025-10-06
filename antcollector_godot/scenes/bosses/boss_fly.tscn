@@ -1,7 +1,85 @@
-[gd_scene load_steps=5 format=3 uid="uid://fta2flucjjff"]
+[gd_scene load_steps=17 format=3 uid="uid://fta2flucjjff"]
 
 [ext_resource type="Script" uid="uid://cykaa05bg5wpn" path="res://scripts/bosses/boss_fly.gd" id="1_mslyj"]
 [ext_resource type="Texture2D" uid="uid://niuipmij43i" path="res://assets/bosses/boss_fly.png" id="2_mslyj"]
+[ext_resource type="Texture2D" uid="uid://dm0x1mrgqa6i0" path="res://assets/bosses/chaos_crawls.png" id="2_p4miq"]
+[ext_resource type="Texture2D" uid="uid://chu2diaqiodpx" path="res://assets/bosses/chaos_flies.png" id="4_twugx"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mq0ea"]
+atlas = ExtResource("2_p4miq")
+region = Rect2(0, 0, 1024, 1024)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_isykj"]
+atlas = ExtResource("2_p4miq")
+region = Rect2(1024, 0, 1024, 1024)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rqfku"]
+atlas = ExtResource("2_p4miq")
+region = Rect2(2048, 0, 1024, 1024)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l45sx"]
+atlas = ExtResource("2_p4miq")
+region = Rect2(3072, 0, 1024, 1024)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fpghh"]
+atlas = ExtResource("2_mslyj")
+region = Rect2(0, 0, 1024, 1024)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tlt62"]
+atlas = ExtResource("4_twugx")
+region = Rect2(0, 0, 1024, 1024)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p4miq"]
+atlas = ExtResource("4_twugx")
+region = Rect2(1024, 0, 1024, 1024)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_twugx"]
+atlas = ExtResource("4_twugx")
+region = Rect2(2048, 0, 1024, 1024)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ctdni"]
+atlas = ExtResource("4_twugx")
+region = Rect2(3072, 0, 1024, 1024)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mq0ea"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mq0ea")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_isykj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rqfku")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l45sx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fpghh")
+}],
+"loop": true,
+"name": &"died",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tlt62")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p4miq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_twugx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ctdni")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_tlt62"]
 radius = 162.003
@@ -12,11 +90,13 @@ radius = 198.252
 [node name="BossFly" type="CharacterBody2D"]
 script = ExtResource("1_mslyj")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(33, 5)
 rotation = 1.5708
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("2_mslyj")
+sprite_frames = SubResource("SpriteFrames_mq0ea")
+animation = &"died"
+autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 1)

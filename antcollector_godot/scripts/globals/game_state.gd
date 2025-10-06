@@ -5,7 +5,7 @@ const MAX_DAYS: int = 7
 
 
 var current_day: int = 0
-var current_boss_index: int = 2
+var current_boss_index: int = 0
 
 var is_tutor_passed: bool = false
 var bosses_hp = [
@@ -14,7 +14,7 @@ var bosses_hp = [
 var ants_dies: int = 0
 var fights = []
 var death_reasons = {
-	"poison": "poisoned by you(",
+	"poison": "poisoned by you!",
 	"antie": "antie happened",
 	"lost": "unknown",
 	"jar": "Jar impact",

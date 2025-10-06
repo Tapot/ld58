@@ -1,10 +1,12 @@
 class_name BossFly extends CharacterBody2D
+@onready var sprite_2d: AnimatedSprite2D = $Sprite2D
 
 var move_speed: float = 600.0
 var rotate_speed: float = 2.0
 var rotate_tolerance: float = 0.5
 var threshold: float = 10
 var _move_target
+var boss_name = "CHAOS OF FLIES"
 
 
 func _ready() -> void:
@@ -74,3 +76,7 @@ func _on_hit_box_body_entered(body: Node2D) -> void:
 				body.attack_size
 			)
 		body.die("fly")
+
+
+func die():
+	sprite_2d.play("died")

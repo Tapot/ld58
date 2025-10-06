@@ -1,7 +1,70 @@
-[gd_scene load_steps=5 format=3 uid="uid://dd3lx7u6o07e1"]
+[gd_scene load_steps=14 format=3 uid="uid://dd3lx7u6o07e1"]
 
-[ext_resource type="Texture2D" uid="uid://cc2fof5gykui6" path="res://assets/bosses/boss_mama_roach.png" id="1_8elcm"]
 [ext_resource type="Script" uid="uid://ukbmve8wqnl" path="res://scripts/bosses/boss_mama_roach.gd" id="1_g8h6v"]
+[ext_resource type="Texture2D" uid="uid://cfsncr482xllo" path="res://assets/bosses/mama_roach_death.png" id="2_3ru04"]
+[ext_resource type="Texture2D" uid="uid://56bdanfg3k1a" path="res://assets/bosses/mama_roach_idle.png" id="2_g8h6v"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lh08j"]
+atlas = ExtResource("2_3ru04")
+region = Rect2(0, 0, 670, 829)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d2xgx"]
+atlas = ExtResource("2_3ru04")
+region = Rect2(670, 0, 670, 829)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t5ihh"]
+atlas = ExtResource("2_3ru04")
+region = Rect2(1340, 0, 670, 829)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3ru04"]
+atlas = ExtResource("2_g8h6v")
+region = Rect2(0, 0, 670, 829)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cgijb"]
+atlas = ExtResource("2_g8h6v")
+region = Rect2(670, 0, 670, 829)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8xof6"]
+atlas = ExtResource("2_g8h6v")
+region = Rect2(1340, 0, 670, 829)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8tc4i"]
+atlas = ExtResource("2_g8h6v")
+region = Rect2(2010, 0, 670, 829)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8elcm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lh08j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d2xgx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t5ihh")
+}],
+"loop": false,
+"name": &"die",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3ru04")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cgijb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8xof6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8tc4i")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_g8h6v"]
 radius = 33.0
@@ -14,11 +77,13 @@ height = 180.0
 [node name="BossMamaRoach" type="CharacterBody2D"]
 script = ExtResource("1_g8h6v")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(33, 5)
 rotation = 1.5708
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("1_8elcm")
+sprite_frames = SubResource("SpriteFrames_8elcm")
+animation = &"die"
+autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 1)

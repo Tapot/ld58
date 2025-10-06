@@ -127,8 +127,10 @@ func die(reason: String):
 	is_dead = true
 	
 	if is_attacking:
+		Sfx.play_explode()
 		sprite_2d.play("explode")
 	else:
+		Sfx.play_die()
 		sprite_2d.play("die")
 	Signals.emit_ant_died(ant_name, reason, global_position)
 

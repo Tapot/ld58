@@ -1,8 +1,10 @@
-[gd_resource type="LabelSettings" format=3 uid="uid://cymtqecixfoxw"]
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://cymtqecixfoxw"]
+
+[ext_resource type="FontFile" uid="uid://cwe6l11eroit2" path="res://assets/fonts/Lacquer/Lacquer-Regular.ttf" id="1_te5fi"]
 
 [resource]
+font = ExtResource("1_te5fi")
 font_size = 32
 font_color = Color(0.054902, 0.129412, 0.14902, 1)
 outline_color = Color(0, 0, 0, 1)
 shadow_size = 5
-shadow_color = Color(0.968627, 0.380392, 0, 0.32549)

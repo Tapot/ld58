@@ -33,6 +33,7 @@ func on_start_game():
 	GameState.current_boss_index = 0
 	GameState.current_day = 0
 	GameState.collections_log.clear()
+	GameState.fights = []
 
 
 func _on_texture_button_mouse_entered() -> void:

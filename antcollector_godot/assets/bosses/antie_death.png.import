@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://lbhr7lp233t"
-path="res://.godot/imported/boss_ant.png-66193e4682be0054d89cf56b4a9eab06.ctex"
+uid="uid://dxs4rce27cdl6"
+path="res://.godot/imported/antie_death.png-6a0923c24cef5246552f0ec3a77ee7e1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/bosses/boss_ant.png"
-dest_files=["res://.godot/imported/boss_ant.png-66193e4682be0054d89cf56b4a9eab06.ctex"]
+source_file="res://assets/bosses/antie_death.png"
+dest_files=["res://.godot/imported/antie_death.png-6a0923c24cef5246552f0ec3a77ee7e1.ctex"]
 
 [params]
 

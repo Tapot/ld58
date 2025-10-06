@@ -16,3 +16,7 @@ func _on_mouse_exited() -> void:
 
 func set_text(value: String) -> void:
 	text_label.text = value
+
+
+func _on_pressed() -> void:
+	Sfx.play_click()

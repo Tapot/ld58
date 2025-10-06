@@ -1,7 +1,70 @@
-[gd_scene load_steps=5 format=3 uid="uid://bej8nw3lyx5m8"]
+[gd_scene load_steps=14 format=3 uid="uid://bej8nw3lyx5m8"]
 
 [ext_resource type="Script" uid="uid://bxbwbkijnnib6" path="res://scripts/bosses/boss_antie.gd" id="1_6be3j"]
-[ext_resource type="Texture2D" uid="uid://lbhr7lp233t" path="res://assets/bosses/boss_ant.png" id="1_o5ynj"]
+[ext_resource type="Texture2D" uid="uid://dxs4rce27cdl6" path="res://assets/bosses/antie_death.png" id="2_qurkx"]
+[ext_resource type="Texture2D" uid="uid://ds3mwa2j81p" path="res://assets/bosses/antie_idle.png" id="3_mr6cm"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1o281"]
+atlas = ExtResource("2_qurkx")
+region = Rect2(0, 0, 500, 700)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hhxmj"]
+atlas = ExtResource("2_qurkx")
+region = Rect2(500, 0, 500, 700)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x82qw"]
+atlas = ExtResource("2_qurkx")
+region = Rect2(1000, 0, 500, 700)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xcc5f"]
+atlas = ExtResource("3_mr6cm")
+region = Rect2(0, 0, 500, 700)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m5yf5"]
+atlas = ExtResource("3_mr6cm")
+region = Rect2(500, 0, 500, 700)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_io87r"]
+atlas = ExtResource("3_mr6cm")
+region = Rect2(1000, 0, 500, 700)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_usdn2"]
+atlas = ExtResource("3_mr6cm")
+region = Rect2(1500, 0, 500, 700)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hy4wy"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1o281")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hhxmj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x82qw")
+}],
+"loop": true,
+"name": &"died",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xcc5f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m5yf5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_io87r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_usdn2")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6bmul"]
 radius = 96.0
@@ -14,8 +77,10 @@ height = 554.0
 [node name="BossAntie" type="CharacterBody2D"]
 script = ExtResource("1_6be3j")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_o5ynj")
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_hy4wy")
+animation = &"died"
+autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(4, 78)

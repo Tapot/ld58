@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://c8f216h506lfj"]
+
+[ext_resource type="Script" uid="uid://4c1cq8tioniq" path="res://scripts/globals/sfx.gd" id="1_27irl"]
+[ext_resource type="AudioStream" uid="uid://dw22ucxfgms0g" path="res://assets/sfx/ld58-antsbattler-mecha-combat.mp3" id="1_kxb7f"]
+
+[node name="Sfx" type="Node2D"]
+script = ExtResource("1_27irl")
+
+[node name="music" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("1_kxb7f")
+autoplay = true
+
+[node name="sfx" type="AudioStreamPlayer2D" parent="."]

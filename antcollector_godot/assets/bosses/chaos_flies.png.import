@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cc2fof5gykui6"
-path="res://.godot/imported/boss_mama_roach.png-0808d6afad43aea5591115e5e4f9b922.ctex"
+uid="uid://chu2diaqiodpx"
+path="res://.godot/imported/chaos_flies.png-77d677c1afb38bcd57655045cb7f4fda.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/bosses/boss_mama_roach.png"
-dest_files=["res://.godot/imported/boss_mama_roach.png-0808d6afad43aea5591115e5e4f9b922.ctex"]
+source_file="res://assets/bosses/chaos_flies.png"
+dest_files=["res://.godot/imported/chaos_flies.png-77d677c1afb38bcd57655045cb7f4fda.ctex"]
 
 [params]
 

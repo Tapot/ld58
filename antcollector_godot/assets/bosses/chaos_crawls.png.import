@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://1by1s0mvd5y4"
-path="res://.godot/imported/boss_metal_leak_a.png-8e9cea7ae3c01a52f312f4804a2cd568.ctex"
+uid="uid://dm0x1mrgqa6i0"
+path="res://.godot/imported/chaos_crawls.png-a7ec1ebe9eea86ec7f851ad38c993d52.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/bosses/boss_metal_leak_a.png"
-dest_files=["res://.godot/imported/boss_metal_leak_a.png-8e9cea7ae3c01a52f312f4804a2cd568.ctex"]
+source_file="res://assets/bosses/chaos_crawls.png"
+dest_files=["res://.godot/imported/chaos_crawls.png-a7ec1ebe9eea86ec7f851ad38c993d52.ctex"]
 
 [params]
 

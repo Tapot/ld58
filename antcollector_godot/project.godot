@@ -22,6 +22,7 @@ Signals="*res://scripts/globals/signals.gd"
 Scenes="*res://scripts/globals/scenes.gd"
 Screen="*res://scripts/globals/screen.gd"
 GameState="*res://scripts/globals/game_state.gd"
+Sfx="*res://scripts/globals/sfx.tscn"
 
 [display]
 

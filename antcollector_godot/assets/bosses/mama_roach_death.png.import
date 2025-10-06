@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ds3mwa2j81p"
-path="res://.godot/imported/antie_idle.png-89f3942691e2d0cb2c9c24e0c3762293.ctex"
+uid="uid://cfsncr482xllo"
+path="res://.godot/imported/mama_roach_death.png-8255c3c40d8df12ad23e1b66bc55f354.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/bosses/antie_idle.png"
-dest_files=["res://.godot/imported/antie_idle.png-89f3942691e2d0cb2c9c24e0c3762293.ctex"]
+source_file="res://assets/bosses/mama_roach_death.png"
+dest_files=["res://.godot/imported/mama_roach_death.png-8255c3c40d8df12ad23e1b66bc55f354.ctex"]
 
 [params]
 

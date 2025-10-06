@@ -31,6 +31,9 @@ func setup_calendar_board() -> void:
 	if GameState.fights.size() < 1:
 		return
 	
+	if GameState.fights.size() > 7:
+		return
+	
 	for i in range(GameState.fights.size()):
 		if GameState.fights[i]:
 			calendar_board.set_success(i)

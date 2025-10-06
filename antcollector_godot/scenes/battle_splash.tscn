@@ -1,10 +1,10 @@
 [gd_scene load_steps=6 format=3 uid="uid://c6eyiuvxytfs8"]
 
 [ext_resource type="Script" uid="uid://db2rpovpkadih" path="res://scripts/battle_splash.gd" id="1_ymfor"]
-[ext_resource type="LabelSettings" uid="uid://cymtqecixfoxw" path="res://resources/labels/game_title_settings.tres" id="2_iqa2b"]
+[ext_resource type="PackedScene" uid="uid://cn2wst8jflg0u" path="res://scenes/UI/simple_button.tscn" id="2_66ijq"]
 [ext_resource type="Texture2D" uid="uid://d34igeuanrrxr" path="res://assets/vs_splashes/splash_1.png" id="2_oqhbo"]
 [ext_resource type="Texture2D" uid="uid://chn6tkbshbuw0" path="res://assets/vs_splashes/splash_2.png" id="3_66ijq"]
-[ext_resource type="Texture2D" uid="uid://cpitqyivqxa5p" path="res://assets/vs_splashes/splash_3.png" id="4_jllrn"]
+[ext_resource type="Texture2D" uid="uid://dnsdwlh1bbyek" path="res://assets/vs_splashes/splash_4.png" id="3_oqhbo"]
 
 [node name="BattleSplash" type="Node2D"]
 script = ExtResource("1_ymfor")
@@ -16,7 +16,7 @@ centered = false
 
 [node name="BattleBoss2" type="Sprite2D" parent="."]
 position = Vector2(0, -1084)
-texture = ExtResource("4_jllrn")
+texture = ExtResource("3_oqhbo")
 centered = false
 
 [node name="BattleBoss3" type="Sprite2D" parent="."]
@@ -24,14 +24,10 @@ position = Vector2(0, -1084)
 texture = ExtResource("3_66ijq")
 centered = false
 
-[node name="Label2" type="Label" parent="."]
-visible = false
-offset_left = 206.0
-offset_top = 430.0
-offset_right = 1778.0
-offset_bottom = 9301.0
-text = "splash
-ants vs. boss N
+[node name="SimpleButton" parent="." instance=ExtResource("2_66ijq")]
+offset_left = 750.0
+offset_top = 850.0
+offset_right = 1150.0
+offset_bottom = 1090.0
 
-PRESS ANY KEY TO SKIP"
-label_settings = ExtResource("2_iqa2b")
+[connection signal="pressed" from="SimpleButton" to="." method="_on_simple_button_pressed"]

@@ -1,9 +1,13 @@
 class_name BossAntie extends CharacterBody2D
 
+@onready var sprite_2d: AnimatedSprite2D = $Sprite2D
 
 var _init_place_y_movement: float = 300
 var _init_speed: float = 50
 
+
+
+var boss_name = "POOR Antie"
 func _ready() -> void:
 	global_position = Screen.get_bottom_centred_point_on_screen()
 	
@@ -21,3 +25,7 @@ func _on_hit_box_body_entered(body: Node2D) -> void:
 				body.attack_size
 			)
 		body.die("antie")
+
+
+func die():
+	sprite_2d.play("died")

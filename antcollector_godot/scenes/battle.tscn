@@ -1,14 +1,27 @@
-[gd_scene load_steps=7 format=3 uid="uid://dnskhem67g14t"]
+[gd_scene load_steps=12 format=3 uid="uid://dnskhem67g14t"]
 
 [ext_resource type="Script" uid="uid://brwee2xgcegkd" path="res://scripts/battle/battle.gd" id="1_dn72j"]
 [ext_resource type="PackedScene" uid="uid://coqj1y2pw7q3s" path="res://scenes/ants/ant_bite_spawner.tscn" id="2_p1qf1"]
 [ext_resource type="PackedScene" uid="uid://bwyqfioglhi6o" path="res://scenes/ants/ants_spawner.tscn" id="4_a12nh"]
 [ext_resource type="PackedScene" uid="uid://kn6sfo1y22m2" path="res://scenes/bosses/bosses_spawner.tscn" id="4_lpir7"]
+[ext_resource type="Texture2D" uid="uid://dho5t5l4uagu" path="res://assets/UI/dialogue.png" id="5_4k1nj"]
+[ext_resource type="FontFile" uid="uid://cwe6l11eroit2" path="res://assets/fonts/Lacquer/Lacquer-Regular.ttf" id="6_f4pi3"]
+[ext_resource type="PackedScene" uid="uid://cn2wst8jflg0u" path="res://scenes/UI/simple_button.tscn" id="7_yahae"]
 
 [sub_resource type="Gradient" id="Gradient_p1qf1"]
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_a12nh"]
 gradient = SubResource("Gradient_p1qf1")
+
+[sub_resource type="LabelSettings" id="LabelSettings_4k1nj"]
+font = ExtResource("6_f4pi3")
+font_size = 72
+font_color = Color(0.000333904, 0.000333904, 0.000333904, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_v7i3o"]
+font = ExtResource("6_f4pi3")
+font_size = 72
+font_color = Color(1, 0.137255, 0.117647, 1)
 
 [node name="Battle" type="Node2D"]
 script = ExtResource("1_dn72j")
@@ -42,4 +55,35 @@ offset_bottom = 129.0
 theme_override_font_sizes/font_size = 64
 value = 100.0
 
+[node name="BossName" type="Label" parent="BossHP"]
+layout_mode = 0
+offset_left = 15.0
+offset_top = 103.0
+offset_right = 55.0
+offset_bottom = 126.0
+text = "BOSS NAME"
+label_settings = SubResource("LabelSettings_4k1nj")
+
+[node name="BattleEnd" type="Sprite2D" parent="."]
+position = Vector2(1020, 514)
+texture = ExtResource("5_4k1nj")
+
+[node name="BattleEndLabel" type="Label" parent="BattleEnd"]
+offset_left = -332.0
+offset_top = -110.0
+offset_right = 74.0
+offset_bottom = -23.0
+text = "Boss is dead"
+label_settings = SubResource("LabelSettings_v7i3o")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SimpleButton" parent="BattleEnd" instance=ExtResource("7_yahae")]
+offset_left = -106.0
+offset_top = 118.0
+offset_right = 294.0
+offset_bottom = 358.0
+scale = Vector2(0.5, 0.5)
+
 [connection signal="gui_input" from="Sprite2D/ColorRect" to="." method="_on_color_rect_gui_input"]
+[connection signal="pressed" from="BattleEnd/SimpleButton" to="." method="_on_simple_button_pressed"]
