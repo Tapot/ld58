@@ -1,42 +1,42 @@
-[gd_scene load_steps=4 format=3 uid="uid://bd3bwa7cbo7hj"]
+[gd_scene format=3 uid="uid://bd3bwa7cbo7hj"]
 
 [ext_resource type="Script" uid="uid://cj0ek65atas56" path="res://scripts/calendar/calendar_board.gd" id="1_airs4"]
 [ext_resource type="Texture2D" uid="uid://d3e33f0gfxsf0" path="res://assets/calendar/calendar.png" id="1_mkef6"]
 [ext_resource type="PackedScene" uid="uid://dtwqpkisxvh58" path="res://scenes/calendar/calendar_mark.tscn" id="3_2isbh"]
 
-[node name="CalendarBoard" type="Node2D"]
+[node name="CalendarBoard" type="Node2D" unique_id=1340155631]
 script = ExtResource("1_airs4")
 
-[node name="CalendarImage" type="Sprite2D" parent="."]
+[node name="CalendarImage" type="Sprite2D" parent="." unique_id=773424404]
 texture = ExtResource("1_mkef6")
 centered = false
 
-[node name="Marks" type="Node2D" parent="."]
+[node name="Marks" type="Node2D" parent="." unique_id=899601855]
 
-[node name="CalendarMark" parent="Marks" instance=ExtResource("3_2isbh")]
+[node name="CalendarMark" parent="Marks" unique_id=155431215 instance=ExtResource("3_2isbh")]
 visible = false
 position = Vector2(1333, 340)
 
-[node name="CalendarMark2" parent="Marks" instance=ExtResource("3_2isbh")]
+[node name="CalendarMark2" parent="Marks" unique_id=1428571317 instance=ExtResource("3_2isbh")]
 visible = false
 position = Vector2(573, 441)
 
-[node name="CalendarMark3" parent="Marks" instance=ExtResource("3_2isbh")]
+[node name="CalendarMark3" parent="Marks" unique_id=1486702850 instance=ExtResource("3_2isbh")]
 visible = false
 position = Vector2(702, 441)
 
-[node name="CalendarMark4" parent="Marks" instance=ExtResource("3_2isbh")]
+[node name="CalendarMark4" parent="Marks" unique_id=942879653 instance=ExtResource("3_2isbh")]
 visible = false
 position = Vector2(827, 441)
 
-[node name="CalendarMark5" parent="Marks" instance=ExtResource("3_2isbh")]
+[node name="CalendarMark5" parent="Marks" unique_id=940022535 instance=ExtResource("3_2isbh")]
 visible = false
 position = Vector2(954, 439)
 
-[node name="CalendarMark6" parent="Marks" instance=ExtResource("3_2isbh")]
+[node name="CalendarMark6" parent="Marks" unique_id=354176121 instance=ExtResource("3_2isbh")]
 visible = false
 position = Vector2(1081, 439)
 
-[node name="CalendarMark7" parent="Marks" instance=ExtResource("3_2isbh")]
+[node name="CalendarMark7" parent="Marks" unique_id=844123804 instance=ExtResource("3_2isbh")]
 visible = false
 position = Vector2(1204, 440)

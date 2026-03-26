@@ -5,12 +5,12 @@ class_name BossAntie extends CharacterBody2D
 var _init_place_y_movement: float = 300
 var _init_speed: float = 50
 
+var boss_name: String = "POOR Antie"
 
 
-var boss_name = "POOR Antie"
 func _ready() -> void:
 	global_position = Screen.get_bottom_centred_point_on_screen()
-	
+
 
 func _process(delta: float) -> void:
 	if _init_place_y_movement > 0:
@@ -21,12 +21,10 @@ func _process(delta: float) -> void:
 func _on_hit_box_body_entered(body: Node2D) -> void:
 	if body is Ant:
 		if body.is_attacking:
-			Signals.emit_damage_boss(
-				body.attack_size
-			)
-		body.die("antie")
+			Signals.emit_damage_boss((body as Ant).attack_size)
+		(body as Ant).die("antie")
 
 
-func die():
+func die() -> void:
 	global_position.y += 300
 	sprite_2d.play("died")

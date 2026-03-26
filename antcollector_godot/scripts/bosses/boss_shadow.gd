@@ -1,10 +1,11 @@
 extends Node2D
 
-var radius: float = 0.0       # current radius
+var radius: float = 0.0  # current radius
 var target_radius: float = 100.0
-var duration: float = 1.0     # seconds
+var duration: float = 1.0  # seconds
 var elapsed: float = 0.0
 var animating: bool = false
+
 
 # Start the circle animation
 func start_circle(pos: Vector2, max_radius: float, time: float):
@@ -16,6 +17,7 @@ func start_circle(pos: Vector2, max_radius: float, time: float):
 	animating = true
 	queue_redraw()
 
+
 func _process(delta):
 	if animating:
 		elapsed += delta
@@ -26,6 +28,7 @@ func _process(delta):
 
 		if t >= 1.0:
 			animating = false
+
 
 func _draw():
 	if radius > 0.0:

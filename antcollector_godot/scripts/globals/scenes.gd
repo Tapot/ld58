@@ -1,6 +1,5 @@
 extends Node
 
-
 var scenes: Dictionary = {
 	"start": preload("res://scenes/start_game_main.tscn"),
 	"start_comics": preload("res://scenes/start_comics.tscn"),
@@ -28,17 +27,16 @@ func go_to_next_scene(scene_name: String = "") -> void:
 	if not scene_name:
 		scene_name = next_scenes[current_scene]
 	current_scene = scene_name
-	get_tree().call_deferred(
-		"change_scene_to_packed",
-		scenes[current_scene]
-	)
+	get_tree().call_deferred("change_scene_to_packed", scenes[current_scene])
 
 
 func go_to_battle_scene() -> void:
 	go_to_next_scene("battle_splash")
 
+
 func go_to_finish_scene() -> void:
 	go_to_next_scene("end_game_comics")
+
 
 func go_to_tutorial_scene() -> void:
 	go_to_next_scene("tutorial")

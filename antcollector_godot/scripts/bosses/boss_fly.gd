@@ -5,8 +5,8 @@ var move_speed: float = 600.0
 var rotate_speed: float = 2.0
 var rotate_tolerance: float = 0.5
 var threshold: float = 10
-var _move_target
-var boss_name = "CHAOS OF FLIES"
+var _move_target: Vector2
+var boss_name: String = "CHAOS OF FLIES"
 var is_dead: bool = false
 
 
@@ -17,7 +17,7 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	if global_position.x > 4000 or global_position.x < -1000:
 		global_position.x = 0
-	
+
 	if global_position.y > 4000 or global_position.y < -1000:
 		global_position.y = 0
 
@@ -38,19 +38,16 @@ func _physics_process(delta: float) -> void:
 
 
 func rotate_to_target(
-	target: Vector2,
-	delta: float,
-	rotation_speed: float,
-	tolerance: float
+	target: Vector2, delta: float, rotation_speed: float, tolerance: float
 ) -> bool:
-	var dir = (target - global_position).normalized()
-	var target_angle = dir.angle()
-	var angle_diff = wrapf(target_angle - rotation, -PI, PI)
+	var dir: Vector2 = (target - global_position).normalized()
+	var target_angle: float = dir.angle()
+	var angle_diff: float = wrapf(target_angle - rotation, -PI, PI)
 
 	if abs(angle_diff) <= tolerance:
 		rotation = target_angle
 		return true
-	var step = rotation_speed * delta
+	var step: float = rotation_speed * delta
 	if abs(angle_diff) < step:
 		rotation = target_angle
 	else:
@@ -60,29 +57,25 @@ func rotate_to_target(
 
 
 func move_to_target(delta: float, speed: float) -> void:
-	var to_target = _move_target - global_position
-	
+	var to_target: Vector2 = _move_target - global_position
+
 	if to_target.length() <= threshold:
 		_move_target = Vector2.ZERO
 
-	var desired_angle = to_target.angle()
+	var desired_angle: float = to_target.angle()
 
 	rotation = lerp_angle(rotation, desired_angle, rotate_speed * delta)
-	var direction = Vector2.RIGHT.rotated(rotation)
+	var direction: Vector2 = Vector2.RIGHT.rotated(rotation)
 	global_position += direction * speed * delta
-
-
 
 
 func _on_hit_box_body_entered(body: Node2D) -> void:
 	if body is Ant:
 		if body.is_attacking:
-			Signals.emit_damage_boss(
-				body.attack_size
-			)
-		body.die("fly")
+			Signals.emit_damage_boss((body as Ant).attack_size)
+		(body as Ant).die("fly")
 
 
-func die():
+func die() -> void:
 	is_dead = true
 	sprite_2d.play("died")

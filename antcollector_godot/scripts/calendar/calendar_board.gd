@@ -1,18 +1,17 @@
 class_name CalendarBoard extends Node2D
 
-@onready var calendar_mark_1: Node2D = $Marks/CalendarMark
-@onready var calendar_mark_2: Node2D = $Marks/CalendarMark2
-@onready var calendar_mark_3: Node2D = $Marks/CalendarMark3
-@onready var calendar_mark_4: Node2D = $Marks/CalendarMark4
-@onready var calendar_mark_5: Node2D = $Marks/CalendarMark5
-@onready var calendar_mark_6: Node2D = $Marks/CalendarMark6
-@onready var calendar_mark_7: Node2D = $Marks/CalendarMark7
+@onready var calendar_mark_1: CalendarMark = $Marks/CalendarMark
+@onready var calendar_mark_2: CalendarMark = $Marks/CalendarMark2
+@onready var calendar_mark_3: CalendarMark = $Marks/CalendarMark3
+@onready var calendar_mark_4: CalendarMark = $Marks/CalendarMark4
+@onready var calendar_mark_5: CalendarMark = $Marks/CalendarMark5
+@onready var calendar_mark_6: CalendarMark = $Marks/CalendarMark6
+@onready var calendar_mark_7: CalendarMark = $Marks/CalendarMark7
+
+var _marks: Array[CalendarMark]
 
 
-
-var _marks
-
-func _ready():
+func _ready() -> void:
 	_marks = [
 		calendar_mark_1,
 		calendar_mark_2,
@@ -26,7 +25,7 @@ func _ready():
 
 func set_success(mark_index: int) -> void:
 	if _marks:
-		var mark = _marks[mark_index]
+		var mark: Node2D = _marks[mark_index]
 		mark.show()
 		mark.set_success()
 

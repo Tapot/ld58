@@ -6,22 +6,20 @@ var move_speed: float = 600.0
 var rotate_speed: float = 2.0
 var rotate_tolerance: float = 0.5
 var threshold: float = 10
-var _move_target
-var boss_name = "MAMA ROACH"
+var _move_target: Vector2
+var boss_name: String = "MAMA ROACH"
 var is_dead: bool = false
 
 
 func _ready() -> void:
 	global_position = Screen.get_random_point_on_screen()
-	Signals.connect_ant_bite_appears(
-		on_ant_bite_appears
-	)
+	Signals.connect_ant_bite_appears(on_ant_bite_appears)
 
 
 func _process(_delta: float) -> void:
 	if global_position.x > 4000 or global_position.x < -1000:
 		global_position.x = 0
-	
+
 	if global_position.y > 4000 or global_position.y < -1000:
 		global_position.y = 0
 
@@ -42,17 +40,14 @@ func _physics_process(delta: float) -> void:
 
 
 func rotate_to_target(
-	target: Vector2,
-	delta: float,
-	rotation_speed: float,
-	tolerance: float
+	target: Vector2, delta: float, rotation_speed: float, tolerance: float
 ) -> bool:
 	# direction from self to target
-	var dir = (target - global_position).normalized()
+	var dir: Vector2 = (target - global_position).normalized()
 	# desired angle
-	var target_angle = dir.angle()
+	var target_angle: float = dir.angle()
 	# shortest signed angle between current and target
-	var angle_diff = wrapf(target_angle - rotation, -PI, PI)
+	var angle_diff: float = wrapf(target_angle - rotation, -PI, PI)
 
 	# check if close enough
 	if abs(angle_diff) <= tolerance:
@@ -60,7 +55,7 @@ func rotate_to_target(
 		return true
 
 	# rotate step depending on delta and rotation_speed
-	var step = rotation_speed * delta
+	var step: float = rotation_speed * delta
 	# clamp rotation so we don't overshoot
 	if abs(angle_diff) < step:
 		rotation = target_angle
@@ -69,36 +64,34 @@ func rotate_to_target(
 
 	return false
 
+
 func move_to_target(delta: float, speed: float) -> void:
 	sprite_2d.play("run")
 	Sfx.play_turn()
-	var to_target = _move_target - global_position
-	
+	var to_target: Vector2 = _move_target - global_position
+
 	if to_target.length() <= threshold:
 		_move_target = Vector2.ZERO
 
-	var desired_angle = to_target.angle()
+	var desired_angle: float = to_target.angle()
 
 	rotation = lerp_angle(rotation, desired_angle, rotate_speed * delta)
-	var direction = Vector2.RIGHT.rotated(rotation)
+	var direction: Vector2 = Vector2.RIGHT.rotated(rotation)
 	global_position += direction * speed * delta
 
 
-func on_ant_bite_appears(pos: Vector2):
+func on_ant_bite_appears(pos: Vector2) -> void:
 	_move_target = pos
-
-
 
 
 func _on_hit_box_body_entered(body: Node2D) -> void:
 	if body is Ant:
-		if body.is_attacking:
-			Signals.emit_damage_boss(
-				body.attack_size
-			)
-		body.die("mama_roach")
+		var ant: Ant = body
+		if ant.is_attacking:
+			Signals.emit_damage_boss(ant.attack_size)
+		ant.die("mama_roach")
 
 
-func die():
+func die() -> void:
 	is_dead = true
 	sprite_2d.play("died")

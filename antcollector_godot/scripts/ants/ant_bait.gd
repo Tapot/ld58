@@ -14,7 +14,7 @@ func set_type(bite_type: String) -> void:
 		is_poison = randf() > 0.5
 	else:
 		is_poison = bite_type == "poison"
-	
+
 	if is_poison:
 		bait_image.frame = 1
 	else:
@@ -31,14 +31,14 @@ func _on_body_entered(body: Node2D) -> void:
 	Sfx.play_eat()
 	if body is BossMamaRoach:
 		die()
-	
+
 	elif body is BossFly:
 		if not is_poison:
 			die()
 	elif body is Ant:
-		
+		var ant: Ant = body
 		if is_poison:
-			body.die("poison")
+			ant.die("poison")
 		else:
-			Signals.emit_attack_boss(body)
+			Signals.emit_attack_boss(ant)
 		die()

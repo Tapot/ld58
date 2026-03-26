@@ -1,10 +1,10 @@
 class_name AntsSpawner extends Node2D
 
-const ANT = preload("res://scenes/ants/ant.tscn")
+const ANT: PackedScene = preload("res://scenes/ants/ant.tscn")
 
 
 func spawn_ant() -> void:
-	var ant = ANT.instantiate()
+	var ant: Ant = ANT.instantiate()
 	ant.global_position = Screen.get_random_point_on_screen()
 	call_deferred("add_child", ant)
 
