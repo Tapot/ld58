@@ -8,7 +8,6 @@ extends Node2D
 @export var car_speed: float = 100.0
 @export var car_acseleration: float = 1.05
 
-
 var run_car: bool = false
 var start_button_pos: Vector2
 
@@ -24,12 +23,12 @@ func _process(delta: float) -> void:
 	if run_car:
 		car.global_position.x += car_speed * delta
 		car_speed *= car_acseleration
-	
+
 	if car.global_position.x > 2000:
 		Scenes.go_to_next_scene()
 
 
-func on_start_game():
+func on_start_game() -> void:
 	run_car = true
 	Sfx.play_car()
 	GameState.current_boss_index = 0

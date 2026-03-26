@@ -4,9 +4,8 @@ extends CharacterBody2D
 @onready var sprite_2d: Sprite2D = $Sprite2D
 @onready var timer: Timer = $Timer
 
-
 var jump_time_sec: float = 3.0
-var base_pos : Vector2
+var base_pos: Vector2
 
 
 func _ready() -> void:
@@ -28,9 +27,7 @@ func jump() -> void:
 func _on_hit_box_body_entered(body: Node2D) -> void:
 	if body is Ant:
 		if body.is_attacking:
-			Signals.emit_damage_boss(
-				body.attack_size
-			)
+			Signals.emit_damage_boss(body.attack_size)
 		body.die("spider")
 
 

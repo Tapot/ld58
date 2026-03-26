@@ -1,12 +1,11 @@
 class_name BossesSpawner extends Node2D
 
+const BOSS_ANTIE: PackedScene = preload("res://scenes/bosses/boss_antie.tscn")
+const BOSS_MAMA_ROACH: PackedScene = preload("res://scenes/bosses/boss_mama_roach.tscn")
+const BOSS_FLY: PackedScene = preload("res://scenes/bosses/boss_fly.tscn")
 
-const BOSS_ANTIE = preload("res://scenes/bosses/boss_antie.tscn")
-const BOSS_MAMA_ROACH = preload("res://scenes/bosses/boss_mama_roach.tscn")
-const BOSS_FLY = preload("res://scenes/bosses/boss_fly.tscn")
-
-var _boss
-var _bosses = [
+var _boss: Node2D
+var _bosses: Array[PackedScene] = [
 	BOSS_ANTIE,
 	BOSS_FLY,
 	BOSS_MAMA_ROACH,
@@ -26,7 +25,7 @@ func get_boss_position() -> Vector2:
 		return Screen.get_random_point_on_screen()
 
 
-func kill_the_boss():
+func kill_the_boss() -> void:
 	if _boss:
 		_boss.die()
 

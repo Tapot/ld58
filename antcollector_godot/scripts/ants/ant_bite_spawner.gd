@@ -1,8 +1,8 @@
 class_name AntsBiteSpawner extends Node2D
 
-const ANT_BAIT = preload("res://scenes/ants/ant_bait.tscn")
+const ANT_BAIT: PackedScene = preload("res://scenes/ants/ant_bait.tscn")
 
-var ant_bait
+var ant_bait: Node2D
 
 
 func spawn_ant_bite(pos: Vector2, bite_type: String) -> void:
@@ -10,7 +10,7 @@ func spawn_ant_bite(pos: Vector2, bite_type: String) -> void:
 		ant_bait = ANT_BAIT.instantiate()
 		ant_bait.global_position = pos
 		add_child(ant_bait)
-		ant_bait.set_type(bite_type)
+		(ant_bait as AntBite).set_type(bite_type)
 		Signals.emit_add_ant_bite(pos)
 	else:
-		ant_bait.die()
+		(ant_bait as AntBite).die()
